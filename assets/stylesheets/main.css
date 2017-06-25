@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  font-family: 'Rubik', sans-serif;
+}
+
+main {
+  flex: 1;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  background: white;
+}
+
+.hero-text {
+  display: inline;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+}
+
+.brand-logo {
+  height: 10em;
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  border-style: none;
+  padding: 1.25em;
+  margin: 0.25em;
+  width: 100%;
+  border-radius: .25em;
+  background-color: #DE3C4B;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #DE3C4B;
+}
+
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+  .hero-image {
+    display: inherit;
+    background-image: url("../images/hero_image.jpeg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #C42847;
+  }
+  .hero-btn {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 992px) {}
