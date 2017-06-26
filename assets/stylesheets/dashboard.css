@@ -1,0 +1,58 @@
+.flex-container {
+  /*display: flex;*/
+  /*flex-direction: column;*/
+}
+
+.sidenav {
+  /*flex: 1*/
+}
+
+nav {
+  /*background-color: #232526;*/
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #232526;
+  position: fixed;
+  height: 100%;
+}
+
+li a {
+  display: block;
+  color: #fceff9;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #DE3C4B;
+  color: white;
+}
+
+.dashboard-body {
+  margin-left: 25%;
+  padding-left: 1em;
+}
+
+li {
+  list-style: none;
+}
+
+.image-resize {
+  width: 25%;
+  background-color: #232526;
+
+}
