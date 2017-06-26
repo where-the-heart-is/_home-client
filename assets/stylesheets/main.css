@@ -19,7 +19,8 @@ main {
 .hero-image {
   display: flex;
   justify-content: center;
-  background: white;
+  background-image: url("../images/hero_image.jpeg");
+  height: 80vh;
 }
 
 .hero-text {
@@ -52,14 +53,22 @@ main {
   color: #DE3C4B;
 }
 
+.features {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.footer {
+  display: flex;
+  background: #36393B;
+  height: 10em;
+}
 
 /* Media Queries */
 
 @media (min-width: 768px) {
   .hero-image {
     display: inherit;
-    background-image: url("../images/hero_image.jpeg");
-    height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -74,6 +83,9 @@ main {
   }
   .hero-btn {
     display: flex;
+    flex-direction: row;
+  }
+  .footer {
     flex-direction: row;
   }
 }
