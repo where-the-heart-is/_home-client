@@ -1,19 +1,14 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  const API_URL = `https://rocky-shelf-87257.herokuapp.com/api/v1/users/`
+  const USER_URL = `https://rocky-shelf-87257.herokuapp.com/api/v1/users/`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
-
-  function parseQueryString(queryString) {
-      queryString = queryString.split('=')
-      return queryString[1];
-  }
 
   createRequestEndpoint(parsedQueryString);
 
   function createRequestEndpoint(id) {
-    const ACCOUNT_URL = API_URL + `${id}`;
-    const PROFILE_URL = API_URL + `${id}/profile`;
+    const ACCOUNT_URL = USER_URL + `${id}`;
+    const PROFILE_URL = USER_URL + `${id}/profile`;
     createUserRequest(ACCOUNT_URL);
     createProfileRequest(PROFILE_URL);
   }
@@ -46,14 +41,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .then(parseJSON)
       .then(returnPropertyResponse)
       .catch(throwError)
-  }
-
-  function parseJSON (response) {
-    return response.json();
-  }
-
-  function throwError() {
-    return new Error("Error")
   }
 
   function returnProfileResponse(response) {
