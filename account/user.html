@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>athome Property Management System</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../assets/stylesheets/main.css">
   <link rel="stylesheet" href="../assets/stylesheets/dashboard.css">
   <!-- Stylesheets -->
@@ -14,20 +14,27 @@
 
 <body>
   <!-- Header -->
-  <header class="sidenav">
+  <header>
     <nav>
       <ul class="nav">
         <li><img class="image-resize" src="../assets/images/atHome_white.png" alt="Logo with white"></li>
         <li><a href="#">Property</a></li>
         <li><a href="#">Rent</a></li>
-        <li><a href="#">Maintenace</a></li>
+        <li><a href="#">Documents</a></li>
+        <li><a href="#">Maintenance</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
     </nav>
   </header>
   <!-- Main Body -->
   <main class="dashboard-body">
+    <section class="profile">
 
+    </section>
+
+    <section class="property">
+
+    </section>
 
 
   </main>
@@ -39,6 +46,20 @@
   </footer>
 
   <!-- Scripts -->
+  <script type="text/x-handlebars-template" id="user-profile-template">
+    {{profile}}
+    <h1>Welcome, {{first_name}}</h1>
+  </script>
+
+  <script type="text/x-handlebars-template" id="user-property-template">
+    {{#each property}}
+    <h1>{{address}}</h1>
+    {{/each}}
+    <h1></h1>
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
+  <script src="../assets/scripts/user.js" charset="utf-8"></script>
 </body>
 
 </html>
