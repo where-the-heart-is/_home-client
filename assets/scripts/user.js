@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function returnPropertyResponse(response) {
-    console.log(response);
     const property = response;
     showUserProperty(property)
   }
