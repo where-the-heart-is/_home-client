@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  const API_URL = `http://localhost:3000/api/v1/users/`
+  const API_URL = `https://rocky-shelf-87257.herokuapp.com/api/v1/users/`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
 
