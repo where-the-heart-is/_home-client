@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function returnPropertyResponse(response) {
+    console.log(response);
     const property = response;
     showUserProperty(property)
   }
@@ -79,9 +80,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function showUserProperty(property) {
     const source = document.querySelector('#user-property-template').innerHTML;
     const template = Handlebars.compile(source);
-    console.log(property);
     const html = template({property});
-    console.log(html);
     const getProperty = document.querySelector('.property');
     const propertyDiv = document.createElement('div');
     propertyDiv.innerHTML = html;
