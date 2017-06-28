@@ -16,6 +16,12 @@ main {
   flex: 1;
 }
 
+/* BACKGROUND COLORS */
+.primary {
+  background: #DE3C4B;
+}
+
+
 .hero-image {
   display: flex;
   justify-content: center;
@@ -40,7 +46,7 @@ main {
 
 .btn {
   border-style: none;
-  padding: 1.25em;
+  padding: .75em;
   margin: 0.25em;
   width: 80%;
   border-radius: .25em;
@@ -91,11 +97,13 @@ main {
 }
 
 .image-cropper {
-  height: 200px;
+  max-height: 350px;
   width: 100%;
   object-fit: cover;
 }
-
+.flex-container{
+  display: inline-flex;
+}
 
 /* Media Queries */
 

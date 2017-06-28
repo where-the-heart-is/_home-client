@@ -35,11 +35,15 @@
   </ul>
   <!-- Main Body -->
   <main>
-
     <section class="content">
-
+      <section class="property">
+        <!-- Append Property Here -->
+      </section>
+      <section class="tenants">
+        <!-- Append Tenants Here -->
+      </section>
       <section class="documents">
-        <!-- Append Property Info Here -->
+        <!-- Append Documents Here -->
       </section>
     </section>
   </main>
@@ -49,29 +53,67 @@
       <p class="copy-title">&copy; Copyright 2017 Where The Heart Is</p>
     </div>
   </footer>
-
   <!-- Scripts -->
 
+  <!-- PROPERTY TEMPLATE -->
   <script type="text/x-handlebars-template" id="single-property-template">
-    {{#each documents}}
-    <!-- <div class="row property">
-      <section class="col-xl-6 col-lg-12">
-        <div class="card">
-          <a href="/account/property.html?property_id={{property_id}}">
-            <img class="card-img-top image-cropper" src="{{image}}" alt="Card image cap">
-            <div class="card-block">
-              <h5 class="card-title">{{address}}</h5>
-              <p class="card-text">{{city}}, {{state}} {{zip_code}}</p>
-            </div>
-            <div class="card-footer text-center">
-              <p class="card-text">DETAILS</p>
-            </div>
-          </a>
+    {{property}}
+    <div class="box">
+      <div class="box-header">
+        <img src="{{image}}" class="image-cropper" alt="{{address}} {{city}}, {{state}} {{zip_code}}" />
+      </div>
+      <div class="box-content">
+        <h5>{{address}}</h5>
+        <h6>{{city}}, {{state}} {{zip_code}}</h6>
+        <h6>Bedrooms: {{bedrooms}}</h6>
+        <h6>Bathrooms: {{bathrooms}}</h6>
+        <h6>Square Footage: {{square_footage}} sq.ft.</h6>
+      </div>
+    </div>
+  </script>
+
+  <!-- TENANT TEMPLATE -->
+  <script type="text/x-handlebars-template" id="tenants-template">
+    {{#each tenants}}
+    <div class="flex-container">
+      <div class="small-box">
+        <div class="text-center">
+          <img src="../assets/images/default_profile.png" alt="{{first_name}} {{last_name}}" class="rounded-circle img-profile" />
+          <h6>{{first_name}} {{last_name}}</h6>
+          <a href="mailto:{{email}}"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
         </div>
-      </section>
-    </div> -->
+      </div>
+    </div>
     {{/each}}
-    <h1></h1>
+  </script>
+
+  <!-- DOCS AND MAINTENANCE -->
+  <script type="text/x-handlebars-template" id="single-doc-template">
+    <div class="flex-container">
+      {{#each documents}} {{#if @first}}
+      <div class="small-box">
+        <div class="box-header header-text">
+          <h5>{{title}}</h5>
+        </div>
+        <div class="box-content">
+          <a href="{{document_url}}"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i>Download</a>
+        </div>
+      </div>
+      {{/if}} {{/each}} {{#each documents}} {{#if @last}}
+      <div class="small-box">
+        <div class="box-header header-text">
+          <h5>{{title}}</h5>
+        </div>
+        <div class="box-content">
+          <h6>Type: {{request}}</h6>
+          <h6>Status: {{status}}</h6>
+        </div>
+      </div>
+      {{/if}} {{/each}}
+    </div>
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
