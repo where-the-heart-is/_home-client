@@ -19,14 +19,30 @@
         <img src="./assets/images/atHome.png" alt="athome logo" class="brand-logo">
         <h1>Your personal property manager</h1>
         <div class="hero-btn">
-          <button type="button" name="signup-btn" class="btn">SIGN UP</button>
-          <button type="button" name="login-btn" class="btn">LOGIN</button>
+          <a type="button" name="signup-btn" class="btn" href="/signup.html">SIGN UP</a>
+          <button type="button" name="login-btn" class="btn" id="login-button" data-toggle="modal" data-target="#login-modal">LOGIN</button>
         </div>
       </div>
     </div>
   </header>
   <!-- Main Body -->
   <main>
+    <div  id="login-modal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div  class="modal-content">
+
+            <div class="login-form form-group">
+              <h3 class="text-center">Account Login</h3>
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="hello@world.com">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password">
+              <button type="button" name="login-button" class="btn btn-success login-button">Login</button>
+              <button type="button" name="cancel-button" class="btn btn-info cancel-button">Cancel</button>
+            </div>
+        </div>
+      </div>
+    </div>
     <section class="container">
       <div class="row features">
         <section class="col-xs-12 col-md-4 text-center">
@@ -71,6 +87,10 @@
     </div>
   </footer>
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="./assets/scripts/index.js" charset="utf-8"></script>
 </body>
 
 </html>
