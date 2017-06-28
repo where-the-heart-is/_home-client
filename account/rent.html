@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>athome | Property Management System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/stylesheets/main.css">
+  <link rel="stylesheet" href="../assets/stylesheets/dashboard.css">
+  <!-- Stylesheets -->
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <ul class="sidenav">
+        <li class="text-center"><img src="../assets/images/atHome_white.png" class="image-resize" alt="Brand Logo" /></li>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Property</a></li>
+        <li><a href="#">Rent</a></li>
+        <li><a href="#">Documents</a></li>
+        <li><a href="#">Maintenance</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Mobile Nav -->
+  <ul class="mobile">
+    <li class="text-center"><img src="../assets/images/atHome_white.png" class="image-resize" alt="Brand Logo" /></li>
+  </ul>
+  <!-- Main Body -->
+  <main>
+    <section class="dash-container">
+      <div class="content">
+        <form class="">
+          <h3>Make a payment</h3>
+          <div class="form-group row">
+            <label class="col-2 col-form-label" for="pay-with">Payment Method</label>
+            <div class="col-10">
+            <select class="form-control" name="pay-with">
+            <option value="credit-card">Credit Card</option>
+            <option value="eCheck">eCheck</option>
+          </select>
+            </div>
+          </div>
+          <div class="form-inline row">
+            <label class="col-2 col-form-label" for="amount">Amount</label>
+            <div class="col-10">
+              <input type="text" name="amount" value="" class="form-control" placeholder="$">
+            </div>
+
+            <label for="payment-date">Payment Date</label>
+            <input type="date" name="payment-date" value="" class="form-control">
+            <label for="payment-frequency">Frequency</label>
+            <select class="form-control" name="payment-frequency" class="form-control">
+            <option value="">One time payment</option>
+            <option value="">Recurring monthly</option>
+          </select>
+          </div>
+          <div class="form-group">
+            <label for="routing-number">Routing number</label>
+            <input type="text" name="routing-number" value="" class="form-control">
+            <label for="account-number">Account number</label>
+            <input type="text" name="account-number" value="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="credit-number">Account number</label>
+            <input type="text" name="account-number" value="" class="form-control">
+          </div>
+
+          <div class="form-group row">
+            <button type="button" name="submit-payment" class="btn">PAY NOW</button>
+            <button type="button" name="cancel-payment" class="btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="copyright text-center">
+      <p class="copy-title">&copy; Copyright 2017 Where The Heart Is</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- <script type="text/x-handlebars-template" id="tenants-template">
+    {{#each tenants}}
+    <div class="flex-container">
+      <div class="small-box">
+        <div class="text-center">
+          <img src="../assets/images/default_profile.png" alt="{{first_name}} {{last_name}}" class="rounded-circle img-profile" />
+          <h6>{{first_name}} {{last_name}}</h6>
+          <a href="mailto:{{email}}"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </script> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
+  <script src="../assets/scripts/global.js" charset="utf-8"></script>
+  <script src="../assets/scripts/property.js" charset="utf-8"></script>
+</body>
+
+</html>
