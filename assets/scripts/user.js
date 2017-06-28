@@ -1,6 +1,18 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  const USER_URL = `https://rocky-shelf-87257.herokuapp.com/api/v1/users/`
+  let BASE_URL = '';
+
+  function getBaseURL() {
+    if (window.location.hostname == "localhost") {
+      BASE_URL = `http://localhost:3000`;
+    } else {
+      BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
+    }
+  }
+
+  getBaseURL();
+
+  const USER_URL = BASE_URL + `/api/v1/users/`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
 
