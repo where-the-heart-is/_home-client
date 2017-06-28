@@ -143,3 +143,37 @@ main {
 }
 
 @media (min-width: 992px) {}
+
+/*
+  ===========================================
+  Signup Page
+  ===========================================
+*/
+.signup-header {
+  display: flex;
+
+}
+
+.signup-header img {
+  margin: 2%;
+  height: 100px;
+}
+
+.signup-form {
+  margin: 2% 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.jumbotron {
+  width: 75%;
+}
+
+.jumbotron form {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.signup-button {
+  width: 25%;
+}
