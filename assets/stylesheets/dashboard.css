@@ -9,6 +9,7 @@
 
 .content {
   margin-left: 0;
+  width: 100%;
   padding: 1em;
 }
 
@@ -63,7 +64,6 @@ div.box>a:hover {
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   min-height: 300px;
-  /*margin: 1em;*/
 }
 
 .small-box {
@@ -128,7 +128,6 @@ a>i {
   .content {
     margin-left: 300px;
   }
-
   li a {
     display: block;
     color: #fceff9;

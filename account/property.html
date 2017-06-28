@@ -92,8 +92,8 @@
 
   <!-- DOCS AND MAINTENANCE -->
   <script type="text/x-handlebars-template" id="single-doc-template">
+    {{#each documents}} {{#if @first}}
     <div class="flex-container">
-      {{#each documents}} {{#if @first}}
       <div class="small-box">
         <div class="box-header header-text">
           <h5>{{title}}</h5>
@@ -102,7 +102,9 @@
           <a href="{{document_url}}"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i>Download</a>
         </div>
       </div>
-      {{/if}} {{/each}} {{#each documents}} {{#if @last}}
+    </div>
+    {{/if}} {{/each}} {{#each documents}} {{#if @last}}
+    <div class="flex-container">
       <div class="small-box">
         <div class="box-header header-text">
           <h5>{{title}}</h5>
@@ -112,8 +114,8 @@
           <h6>Status: {{status}}</h6>
         </div>
       </div>
-      {{/if}} {{/each}}
     </div>
+    {{/if}} {{/each}}
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
