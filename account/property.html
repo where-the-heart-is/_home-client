@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>athome | Property Management System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/stylesheets/main.css">
+  <link rel="stylesheet" href="../assets/stylesheets/dashboard.css">
+  <!-- Stylesheets -->
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <ul class="sidenav">
+        <li class="text-center"><img src="../assets/images/atHome_white.png" class="image-resize" alt="Brand Logo" /></li>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Property</a></li>
+        <li><a href="#">Rent</a></li>
+        <li><a href="#">Documents</a></li>
+        <li><a href="#">Maintenance</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Mobile Nav -->
+  <ul class="mobile">
+    <li class="text-center"><img src="../assets/images/atHome_white.png" class="image-resize" alt="Brand Logo" /></li>
+  </ul>
+  <!-- Main Body -->
+  <main>
+
+    <section class="content">
+
+      <section class="documents">
+        <!-- Append Property Info Here -->
+      </section>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="copyright text-center">
+      <p class="copy-title">&copy; Copyright 2017 Where The Heart Is</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+
+  <script type="text/x-handlebars-template" id="single-property-template">
+    {{#each documents}}
+    <!-- <div class="row property">
+      <section class="col-xl-6 col-lg-12">
+        <div class="card">
+          <a href="/account/property.html?property_id={{property_id}}">
+            <img class="card-img-top image-cropper" src="{{image}}" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="card-title">{{address}}</h5>
+              <p class="card-text">{{city}}, {{state}} {{zip_code}}</p>
+            </div>
+            <div class="card-footer text-center">
+              <p class="card-text">DETAILS</p>
+            </div>
+          </a>
+        </div>
+      </section>
+    </div> -->
+    {{/each}}
+    <h1></h1>
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
+  <script src="../assets/scripts/global.js" charset="utf-8"></script>
+  <script src="../assets/scripts/property.js" charset="utf-8"></script>
+</body>
+
+</html>
