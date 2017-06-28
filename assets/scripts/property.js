@@ -24,11 +24,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function getPropertyInfo(request) {
     fetch(request)
       .then(parseJSON)
-      .then(returnPropInfo)
+      .then(showSingleProp)
       .catch(throwError)
   }
-  function returnPropInfo(response){
-    console.log(response);
+
+  function showSingleProp(property) {
+    const source = document.querySelector('#single-property-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(property[0]);
+    const getProperty = document.querySelector('.property');
+    const propertyDiv = document.createElement('div');
+    propertyDiv.classList.add("dash-container");
+    propertyDiv.innerHTML = html;
+    getProperty.appendChild(propertyDiv);
   }
 
   // TENANT REQUEST
@@ -43,15 +51,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function getTenantInfo(request) {
     fetch(request)
       .then(parseJSON)
-      .then(returnTenantInfo)
+      .then(showTenants)
       .catch(throwError)
   }
 
-  function returnTenantInfo(response) {
-    console.log(response);
+  function showTenants(tenants) {
+    const source = document.querySelector('#tenants-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template({tenants});
+    const getTenant = document.querySelector('.tenants');
+    const tenantDiv = document.createElement('div');
+    tenantDiv.classList.add("dash-container");
+    tenantDiv.innerHTML = html;
+    getTenant.appendChild(tenantDiv);
   }
 
-  // DOCUMENT REQUEST
+  // DOCUMENT AND MAINTENANCE REQUEST
   function createDocRequest(DOC_MAIN_ID_URL) {
     const propertyRequest = new Request(DOC_MAIN_ID_URL, {
       method: "get",
@@ -63,23 +78,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function getDocInformation(request) {
     fetch(request)
       .then(parseJSON)
-      .then(returnDocs)
+      .then(showDocsAndMain)
       .catch(throwError)
   }
 
-  function returnDocs(response) {
-    const propertyDocs = response;
-    console.log(response);
-    showPropertyDocsandMain(propertyDocs);
-  }
-
-  function showPropertyDocsandMain(documents) {
-    const source = document.querySelector('#single-property=temlate').innerHTML;
+  function showDocsAndMain(documents) {
+    const source = document.querySelector('#single-doc-template').innerHTML;
     const template = Handlebars.compile(source);
-    console.log(documents);
     const html = template({documents});
     const getDocs = document.querySelector('.documents');
     const documentDiv = document.createElement('div');
+    documentDiv.classList.add("dash-container");
     documentDiv.innerHTML = html;
     getDocs.appendChild(documentDiv);
   }

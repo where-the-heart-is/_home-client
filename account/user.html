@@ -57,22 +57,23 @@
   <!-- Scripts -->
   <script type="text/x-handlebars-template" id="user-profile-template">
     {{profile}}
-    <h3>DASHBOARD | <small>Welcome, {{first_name}}</small></h3>
+    <div class="dash-container">
+      <h3>DASHBOARD | <small>Welcome, {{first_name}}</small></h3>
+    </div>
   </script>
 
   <script type="text/x-handlebars-template" id="user-property-template">
     {{#each property}}
     <div class="row property">
-      <section class="col-xl-6 col-lg-12">
-        <div class="card">
+      <section class="dash-container">
+        <div class="box">
           <a href="/account/property.html?property_id={{property_id}}">
-            <img class="card-img-top image-cropper" src="{{image}}" alt="Card image cap">
-            <div class="card-block">
-              <h5 class="card-title">{{address}}</h5>
-              <p class="card-text">{{city}}, {{state}} {{zip_code}}</p>
+            <div class="box-header">
+              <img src="{{image}}" class="image-cropper" alt="{{address}} {{city}}, {{state}} {{zip_code}}" />
             </div>
-            <div class="card-footer text-center">
-              <p class="card-text">DETAILS</p>
+            <div class="box-content">
+              <h5>{{address}}</h5>
+              <h6>{{city}}, {{state}} {{zip_code}}</h6>
             </div>
           </a>
         </div>
