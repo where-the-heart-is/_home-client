@@ -105,6 +105,17 @@ main {
   display: inline-flex;
 }
 
+#login-modal {
+  margin-top: 3em;
+}
+.login-form {
+  padding: 2em;
+}
+
+.login-button {
+  margin-top: 2em;
+}
+
 /* Media Queries */
 
 @media (min-width: 768px) {

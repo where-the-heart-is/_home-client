@@ -35,16 +35,51 @@
   </ul>
   <!-- Main Body -->
   <main>
-    <section class="content">
-      <section class="property">
-        <!-- Append Property Here -->
-      </section>
-      <section class="tenants">
-        <!-- Append Tenants Here -->
-      </section>
-      <section class="documents">
-        <!-- Append Documents Here -->
-      </section>
+    <section class="dash-container">
+      <div class="content">
+        <form class="">
+          <h3>Make a payment</h3>
+          <div class="form-group row">
+            <label class="col-2 col-form-label" for="pay-with">Payment Method</label>
+            <div class="col-10">
+            <select class="form-control" name="pay-with">
+            <option value="credit-card">Credit Card</option>
+            <option value="eCheck">eCheck</option>
+          </select>
+            </div>
+          </div>
+          <div class="form-inline row">
+            <label class="col-2 col-form-label" for="amount">Amount</label>
+            <div class="col-10">
+              <input type="text" name="amount" value="" class="form-control" placeholder="$">
+            </div>
+
+            <label for="payment-date">Payment Date</label>
+            <input type="date" name="payment-date" value="" class="form-control">
+            <label for="payment-frequency">Frequency</label>
+            <select class="form-control" name="payment-frequency" class="form-control">
+            <option value="">One time payment</option>
+            <option value="">Recurring monthly</option>
+          </select>
+          </div>
+          <div class="form-group">
+            <label for="routing-number">Routing number</label>
+            <input type="text" name="routing-number" value="" class="form-control">
+            <label for="account-number">Account number</label>
+            <input type="text" name="account-number" value="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="credit-number">Account number</label>
+            <input type="text" name="account-number" value="" class="form-control">
+          </div>
+
+          <div class="form-group row">
+            <button type="button" name="submit-payment" class="btn">PAY NOW</button>
+            <button type="button" name="cancel-payment" class="btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
     </section>
   </main>
   <!-- Footer -->
@@ -53,27 +88,9 @@
       <p class="copy-title">&copy; Copyright 2017 Where The Heart Is</p>
     </div>
   </footer>
+
   <!-- Scripts -->
-
-  <!-- PROPERTY TEMPLATE -->
-  <script type="text/x-handlebars-template" id="single-property-template">
-    {{property}}
-    <div class="box">
-      <div class="box-header">
-        <img src="{{image}}" class="image-cropper" alt="{{address}} {{city}}, {{state}} {{zip_code}}" />
-      </div>
-      <div class="box-content">
-        <h5>{{address}}</h5>
-        <h6>{{city}}, {{state}} {{zip_code}}</h6>
-        <h6>Bedrooms: {{bedrooms}}</h6>
-        <h6>Bathrooms: {{bathrooms}}</h6>
-        <h6>Square Footage: {{square_footage}} sq.ft.</h6>
-      </div>
-    </div>
-  </script>
-
-  <!-- TENANT TEMPLATE -->
-  <script type="text/x-handlebars-template" id="tenants-template">
+  <!-- <script type="text/x-handlebars-template" id="tenants-template">
     {{#each tenants}}
     <div class="flex-container">
       <div class="small-box">
@@ -88,35 +105,7 @@
       </div>
     </div>
     {{/each}}
-  </script>
-
-  <!-- DOCS AND MAINTENANCE -->
-  <script type="text/x-handlebars-template" id="single-doc-template">
-    {{#each documents}} {{#if @first}}
-    <div class="flex-container">
-      <div class="small-box">
-        <div class="box-header header-text">
-          <h5>{{title}}</h5>
-        </div>
-        <div class="box-content">
-          <a href="{{document_url}}"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i>Download</a>
-        </div>
-      </div>
-    </div>
-    {{/if}} {{/each}} {{#each documents}} {{#if @last}}
-    <div class="flex-container">
-      <div class="small-box">
-        <div class="box-header header-text">
-          <h5>{{title}}</h5>
-        </div>
-        <div class="box-content">
-          <h6>Type: {{request}}</h6>
-          <h6>Status: {{status}}</h6>
-        </div>
-      </div>
-    </div>
-    {{/if}} {{/each}}
-  </script>
+  </script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
   <script src="../assets/scripts/global.js" charset="utf-8"></script>

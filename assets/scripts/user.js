@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     createProfileRequest(PROFILE_URL);
   }
 
+  // USER PROFILE REQUEST
   function createProfileRequest(PROFILE_URL) {
     const profileRequest = new Request(PROFILE_URL, {
       method: "get",
@@ -24,10 +25,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function getProfileInformation(request) {
     fetch(request)
       .then(parseJSON)
-      .then(returnProfileResponse)
+      .then(showUserProfile)
       .catch(throwError)
   }
 
+  function showUserProfile(profile) {
+    const source = document.querySelector('#user-profile-template').innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(profile);
+    const getUser = document.querySelector('.profile');
+    const userDiv = document.createElement('div');
+    userDiv.innerHTML = html;
+    getUser.appendChild(userDiv);
+  }
+
+  // USER ACCOUNT REQUEST
   function createUserRequest(ACCOUNT_URL) {
     const userRequest = new Request(ACCOUNT_URL, {
       method: "get",
@@ -39,28 +51,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function getUserInformation(request) {
     fetch(request)
       .then(parseJSON)
-      .then(returnPropertyResponse)
+      .then(showUserProperty)
       .catch(throwError)
-  }
-
-  function returnProfileResponse(response) {
-    const profile = response;
-    showUserProfile(profile)
-  }
-
-  function returnPropertyResponse(response) {
-    const property = response;
-    showUserProperty(property)
-  }
-
-  function showUserProfile(profile) {
-    const source = document.querySelector('#user-profile-template').innerHTML;
-    const template = Handlebars.compile(source);
-    const html = template(profile);
-    const getUser = document.querySelector('.profile');
-    const userDiv = document.createElement('div');
-    userDiv.innerHTML = html;
-    getUser.appendChild(userDiv);
   }
 
   function showUserProperty(property) {
