@@ -103,6 +103,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     documentDiv.classList.add("dash-container");
     documentDiv.innerHTML = html;
     getDocs.appendChild(documentDiv);
+    $('#document-btn').click(event => {
+      event.preventDefault();
+      console.log('WTF');
+      $('#document-edit').modal();
+    })
   }
-
 })
