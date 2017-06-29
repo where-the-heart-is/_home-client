@@ -10,3 +10,8 @@ function parseJSON (response) {
 function throwError() {
   return new Error("Error")
 }
+
+function confirmation(res) {
+  console.log('Completed!');
+  return res.json();
+}
