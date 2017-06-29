@@ -120,8 +120,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       $('#document-edit').modal();
     })
   }
-<<<<<<< HEAD
-=======
 
   function deleteTenantRequest(TENANTS_URL) {
 
@@ -137,6 +135,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
   }
 
-
->>>>>>> a6af4e2684b1cfed7db32803861520d84190055a
 })
