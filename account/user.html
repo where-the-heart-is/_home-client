@@ -24,7 +24,7 @@
         <li><a href="#">Documents</a></li>
         <li><a href="#">Maintenance</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
       </ul>
     </nav>
   </header>
@@ -39,11 +39,13 @@
     <section class="content">
       <section class="profile">
         <!-- Append User Name Here -->
-        <button type="button" name="button" class="btn float-btn-right">ADD NEW PROPERTY</button>
       </section>
 
       <section class="property">
         <!-- Append Property Info Here -->
+      </section>
+      <section>
+        <button type="button" name="button" class="btn landlord">ADD NEW PROPERTY</button>
       </section>
     </section>
   </main>
@@ -82,7 +84,9 @@
     </div>
     <h1></h1>
   </script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
   <script src="../assets/scripts/global.js" charset="utf-8"></script>
   <script src="../assets/scripts/user.js" charset="utf-8"></script>

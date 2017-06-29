@@ -1,3 +1,14 @@
+let BASE_URL = '';
+
+function getBaseURL() {
+  if (window.location.hostname == "localhost") {
+    BASE_URL = `http://localhost:3000`;
+  } else {
+    BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
+  }
+}
+getBaseURL();
+
 function parseQueryString(queryString) {
     queryString = queryString.split('=')
     return queryString[1];
@@ -48,11 +59,19 @@ function redirectIfLoggedIn(){
   }
 }
 
-// function logout(){
-//   localStorage.removeItem('user_id')
-//   // $.get(`${AUTH_URL}/logout`)
-//     .then(result => {
-//       console.log(result);
-//       window.location = '/index.html'
-//     })
-// }
+if (localStorage.is_landlord) {
+  $('.landlord').show();
+} else {
+  $('.landlord').hide();
+}
+
+if(!localStorage.is_landlord) {
+  $('.tenant').show();
+} else {
+  $('.tenant').hide();
+}
+
+function logout(){
+  localStorage.clear()
+  window.location = '/index.html'
+}
