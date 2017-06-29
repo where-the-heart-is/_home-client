@@ -72,10 +72,6 @@ if(!localStorage.is_landlord) {
 }
 
 function logout(){
-  localStorage.removeItem('user_id')
-  $.get(`/logout`)
-    .then(result => {
-      console.log(result);
-      window.location = '/index.html'
-    })
+  localStorage.clear()
+  window.location = '/index.html'
 }
