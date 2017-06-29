@@ -97,7 +97,7 @@ main {
 }
 
 .image-cropper {
-  max-height: 350px;
+  max-height: 100px;
   width: 100%;
   object-fit: cover;
 }
@@ -151,7 +151,6 @@ main {
 */
 .signup-header {
   display: flex;
-
 }
 
 .signup-header img {

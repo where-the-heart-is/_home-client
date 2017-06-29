@@ -63,23 +63,25 @@
   </script>
 
   <script type="text/x-handlebars-template" id="user-property-template">
-    {{#each property}}
     <div class="row property">
-      <section class="dash-container">
-        <div class="box">
-          <a href="/account/property.html?property_id={{property_id}}">
-            <div class="box-header">
-              <img src="{{image}}" class="image-cropper" alt="{{address}} {{city}}, {{state}} {{zip_code}}" />
-            </div>
-            <div class="box-content">
-              <h5>{{address}}</h5>
-              <h6>{{city}}, {{state}} {{zip_code}}</h6>
-            </div>
-          </a>
-        </div>
-      </section>
+      {{#each property}}
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <section class="dash-container">
+          <div class="box">
+            <a href="/account/property.html?property_id={{property_id}}">
+              <div class="box-header">
+                <img src="{{image}}" class="image-cropper" alt="{{address}} {{city}}, {{state}} {{zip_code}}" />
+              </div>
+              <div class="box-content">
+                <h6>{{address}}</h6>
+                <p>{{city}}, {{state}} {{zip_code}}</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+      {{/each}}
     </div>
-    {{/each}}
     <h1></h1>
   </script>
 
