@@ -68,6 +68,7 @@
         <h6>Bedrooms: {{bedrooms}}</h6>
         <h6>Bathrooms: {{bathrooms}}</h6>
         <h6>Square Footage: {{square_footage}} sq.ft.</h6>
+        <a href="./edit_property.html?propertyID={{id}}"class="btn">Edit Property</a>
       </div>
     </div>
   </script>
@@ -90,32 +91,21 @@
     {{/each}}
   </script>
 
-  <!-- DOCS AND MAINTENANCE -->
+  <!-- DOCS -->
   <script type="text/x-handlebars-template" id="single-doc-template">
-    {{#each documents}} {{#if @first}}
     <div class="flex-container">
       <div class="small-box">
         <div class="box-header header-text">
-          <h5>{{title}}</h5>
+          <h5>Documents</h5>
         </div>
+        {{#each documents}}
         <div class="box-content">
-          <a href="{{document_url}}"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i>Download</a>
+          <a href="{{document_url}}"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i>{{title}}</a>
         </div>
+        {{/each}}
+        <button class="btn">Add</button>
       </div>
     </div>
-    {{/if}} {{/each}} {{#each documents}} {{#if @last}}
-    <div class="flex-container">
-      <div class="small-box">
-        <div class="box-header header-text">
-          <h5>{{title}}</h5>
-        </div>
-        <div class="box-content">
-          <h6>Type: {{request}}</h6>
-          <h6>Status: {{status}}</h6>
-        </div>
-      </div>
-    </div>
-    {{/if}} {{/each}}
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
