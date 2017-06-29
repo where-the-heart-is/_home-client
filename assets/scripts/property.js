@@ -92,8 +92,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       removedTenant = $(this).data('id');
       console.log(TENANTS_URL);
       const deleteTenantRequest = createDeleteTenantRequest(TENANTS_URL);
-      processRequest(deleteTenantRequest);
-      window.location = PROPERTY_PAGE_URL;
+      processRequest(deleteTenantRequest)
     });
 
 
@@ -154,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $('#add-document').click(() => {
       let newDocument = createDocumentObject();
       createAddDocumentRequest(DOCUMENT_ENDPOINT, newDocument)
-      window.location = PROPERTY_PAGE_URL;
     });
 
     $('.edit-doc-button').click(function() {
@@ -171,8 +169,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $('#delete-doc-button').click(function() {
       const deleteDocRequest = createDeleteDocumentRequest(DOCUMENT_ENDPOINT);
       console.log(deleteDocRequest);
-      processRequest(deleteDocRequest);
-      window.location = PROPERTY_PAGE_URL;
+      processRequest(deleteDocRequest)
     })
   }
 
@@ -237,13 +234,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function processRequest(request) {
-    console.log('request sent!');
+    // console.log('request sent!');
     fetch(request)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         res.json()
           .then(json => {
-            return json;
+            return window.location = PROPERTY_PAGE_URL
+            // return json;
           })
       })
       .catch(throwError)
