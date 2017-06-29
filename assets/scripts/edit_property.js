@@ -16,7 +16,6 @@ $(() => {
   const parsedQueryString = parseQueryString(hrefLocation);
   // createPropertyEndpoint(parsedQueryString);
 
-
   $('#update-button').click((event) => {
     event.preventDefault();
     let propertyUpdates = createUpdateObject();
@@ -28,6 +27,12 @@ $(() => {
     event.preventDefault();
     createDeleteRequest(`${PROPERTY_ENDPOINT}/${parsedQueryString}`)
   });
+
+  $('#add-tenant').click((event) => {
+    event.preventDefault();
+    let newTenant = createTenantObject();
+    createAddTenantRequest(`${PROPERTY_ENDPOINT}/${parsedQueryString}/tenants`, newTenant)
+  })
 
   //gathers form input
   function createUpdateObject() {
@@ -45,6 +50,26 @@ $(() => {
         zip_code: $('#zip').val()
       }
     }
+  }
+
+  function createTenantObject() {
+    return {
+      email: $('#tenant-email').val(),
+      property_id: parsedQueryString
+    }
+  }
+
+  function createAddTenantRequest(url, body) {
+    const tenantRequest = new Request (url, {
+      method: "post",
+      mode: "cors",
+      body: JSON.stringify(body),
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      }
+    });
+    processRequest(tenantRequest);
   }
 
 
@@ -65,7 +90,6 @@ $(() => {
   function createDeleteRequest(url) {
    const propRequest = new Request (url, {
       method: "delete"
-
     });
     processRequest(propRequest);
   };
@@ -83,8 +107,4 @@ $(() => {
       .catch(throwError)
   }
 
-  function confirmation(res) {
-    console.log('Completed!');
-    return res.json();
-  }
 })
