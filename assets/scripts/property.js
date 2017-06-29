@@ -9,17 +9,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
 
-
-
   getBaseURL();
 
   let documentId = 0;
+  let removedTenant = 0;
 
   const PROPERTY_ENDPOINT = BASE_URL + `/api/v1/property/`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
   createPropertyEndpoint(parsedQueryString);
   const DOCUMENT_ENDPOINT = BASE_URL + `/api/v1/property/${parsedQueryString}/documents/`
+  const PROPERTY_PAGE_URL =`/account/property.html?property_id=${parsedQueryString}`
+  const TENANTS_URL =`${BASE_URL}/api/v1/property/${parsedQueryString}/tenants`
+
 
   function createPropertyEndpoint(id) {
     const DOC_MAIN_ID_URL = PROPERTY_ENDPOINT + `${id}/documents`;
@@ -87,9 +89,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function deleteTenantOnClick() {
     $('.delete-tenant').click(function(event) {
-      const removedTenant = $(this).data('id');
-      console.log(removedTenant);
+      removedTenant = $(this).data('id');
+      console.log(TENANTS_URL);
+      const deleteTenantRequest = createDeleteTenantRequest(TENANTS_URL);
+      processRequest(deleteTenantRequest);
+      window.location = PROPERTY_PAGE_URL;
     });
+
+
+    // console.log(DOCUMENT_ENDPOINT);
+
+  }
+
+  function createDeleteTenantRequest(url) {
+    const deleteBody = {
+      id: removedTenant,
+      property_id: parsedQueryString
+    }
+    const request = new Request(url, {
+      method: "delete",
+      body: JSON.stringify(deleteBody),
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      }
+    });
+    return request;
   }
 
   // DOCUMENT AND MAINTENANCE REQUEST
@@ -129,12 +154,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $('#add-document').click(() => {
       let newDocument = createDocumentObject();
       createAddDocumentRequest(DOCUMENT_ENDPOINT, newDocument)
+      window.location = PROPERTY_PAGE_URL;
     });
 
     $('.edit-doc-button').click(function() {
       documentId = $(this).data('id');
-      console.log(this);
-      console.log(documentId);
       $('#document-edit').modal();
     });
 
@@ -145,7 +169,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     $('#delete-doc-button').click(function() {
-      deleteDocumentRequest(DOCUMENT_ENDPOINT);
+      const deleteDocRequest = createDeleteDocumentRequest(DOCUMENT_ENDPOINT);
+      console.log(deleteDocRequest);
+      processRequest(deleteDocRequest);
+      window.location = PROPERTY_PAGE_URL;
     })
   }
 
@@ -194,35 +221,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
     processRequest(documentRequest)
   }
 
-  function deleteDocumentRequest(url) {
+  function createDeleteDocumentRequest(url) {
     const deleteBody = {
       id: documentId
     }
-
     const request = new Request(url, {
       method: "delete",
-      body: JSON.stringify(deleteBody)
-    })
-  }
-
-  function deleteTenantRequest(TENANTS_URL) {
-
-    const deleteBody = {
-      id: removedTenant,
-      property_id: parsedQueryString
-
-    }
-
-    const request = new Request(TENANTS_URL, {
-      method: "delete",
-      body: JSON.stringify(deleteBody)
-    })
+      body: JSON.stringify(deleteBody),
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      }
+    });
+    return request;
   }
 
   function processRequest(request) {
-    console.log('going!');
+    console.log('request sent!');
     fetch(request)
       .then(res => {
+        console.log(res);
         res.json()
           .then(json => {
             return json;
