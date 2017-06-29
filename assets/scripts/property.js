@@ -13,10 +13,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   getBaseURL();
 
+  let documentId = 0;
+
   const PROPERTY_ENDPOINT = BASE_URL + `/api/v1/property/`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
   createPropertyEndpoint(parsedQueryString);
+  const DOCUMENT_ENDPOINT = BASE_URL + `/api/v1/property/${parsedQueryString}/documents/`
 
   function createPropertyEndpoint(id) {
     const DOC_MAIN_ID_URL = PROPERTY_ENDPOINT + `${id}/documents`;
@@ -114,10 +117,91 @@ document.addEventListener("DOMContentLoaded", function(event) {
     documentDiv.classList.add("dash-container");
     documentDiv.innerHTML = html;
     getDocs.appendChild(documentDiv);
+    docClickHandlers();
+  }
+
+  function docClickHandlers() {
     $('#document-btn').click(event => {
       event.preventDefault();
-      console.log('WTF');
+      $('#document-add').modal();
+    })
+
+    $('#add-document').click(() => {
+      let newDocument = createDocumentObject();
+      createAddDocumentRequest(DOCUMENT_ENDPOINT, newDocument)
+    });
+
+    $('.edit-doc-button').click(function() {
+      documentId = $(this).data('id');
+      console.log(this);
+      console.log(documentId);
       $('#document-edit').modal();
+    });
+
+    $('#edit-document').click(function() {
+      let editedDocument = createEditedDocumentObject();
+      console.log(editedDocument);
+      createEditedDocumentRequest(DOCUMENT_ENDPOINT, editedDocument)
+    });
+
+    $('#delete-doc-button').click(function() {
+      deleteDocumentRequest(DOCUMENT_ENDPOINT);
+    })
+  }
+
+  function createDocumentObject() {
+    return {
+      title: $('#document-title').val(),
+      created_on: new Date(),
+      document_url: $('#document-url').val(),
+      property_id: parsedQueryString
+    };
+  }
+
+  function createEditedDocumentObject() {
+    return {
+      id: documentId,
+      title: $('#edit-title').val(),
+      created_on: new Date(),
+      document_url: $('#edit-url').val(),
+      property_id: parsedQueryString
+    };
+  }
+
+  function createAddDocumentRequest(url, newDocument) {
+    const documentRequest = new Request (url, {
+      method: "post",
+      mode: 'cors',
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newDocument)
+    });
+    processRequest(documentRequest)
+  }
+
+  function createEditedDocumentRequest(url, editedDocument) {
+    const documentRequest = new Request (url, {
+      method: "put",
+      mode: 'cors',
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedDocument)
+    });
+    processRequest(documentRequest)
+  }
+
+  function deleteDocumentRequest(url) {
+    const deleteBody = {
+      id: documentId
+    }
+
+    const request = new Request(url, {
+      method: "delete",
+      body: JSON.stringify(deleteBody)
     })
   }
 
@@ -133,6 +217,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       method: "delete",
       body: JSON.stringify(deleteBody)
     })
+  }
+
+  function processRequest(request) {
+    console.log('going!');
+    fetch(request)
+      .then(res => {
+        res.json()
+          .then(json => {
+            return json;
+          })
+      })
+      .catch(throwError)
   }
 
 })
