@@ -16,17 +16,6 @@
   margin-left: 0;
 }
 
-li a {
-  display: block;
-  color: #fceff9;
-  padding: 1em;
-  font-size: 1em;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-bottom: 1px solid #2D2F31;
-  transition: 0.2s;
-}
-
 a {
   text-decoration: none;
 }
@@ -62,7 +51,7 @@ div.box>a:hover {
 .box {
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-  min-height: 300px;
+  margin-bottom: 1em;
 }
 
 .small-box {
@@ -71,6 +60,7 @@ div.box>a:hover {
   min-height: 250px;
   min-width: 200px;
   margin: 1em 1em 1em 0;
+  padding: 0.6em;
 }
 
 .box-header {
@@ -84,6 +74,7 @@ div.box>a:hover {
 .box-content {
   width: 100%;
   padding: 1em;
+  overflow: hidden;
 }
 
 .box-footer {
@@ -116,7 +107,7 @@ a>i {
   .sidenav {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 225px;
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -125,12 +116,12 @@ a>i {
     height: 100%;
   }
   .content {
-    margin-left: 300px;
+    margin-left: 225px;
   }
   li a {
     display: block;
     color: #fceff9;
-    padding: 1em;
+    padding: 0.5em;
     font-size: 1em;
     text-decoration: none;
     text-transform: uppercase;
@@ -138,7 +129,7 @@ a>i {
     transition: 0.2s;
   }
   .footer {
-    margin-left: 300px;
+    margin-left: 225px;
   }
   .image-resize {
     width: 90%;
