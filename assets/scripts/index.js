@@ -3,14 +3,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function getBaseURL() {
     if (window.location.hostname == "localhost") {
-      BASE_URL = `http://localhost:3000/auth`;
+      BASE_URL = `http://localhost:3000`;
     } else {
       BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
     }
   }
   getBaseURL();
 
-  const NEWACCOUNT_ENDPOINT = BASE_URL + `/signup`;
+  const NEWACCOUNT_ENDPOINT = BASE_URL + `/auth/signup`;
 
   function modalMovement() {
     $('#login-button').click(event => {
@@ -54,8 +54,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function createUserRequest(NEWACCOUNT_ENDPOINT, newAccount) {
-    console.log(NEWACCOUNT_ENDPOINT);
-
     const request = new Request(NEWACCOUNT_ENDPOINT, {
       method: "POST",
       mode: 'cors',
