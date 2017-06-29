@@ -62,15 +62,16 @@
               </div>
 
               <div class="form-check">
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" value="true" id="new-account-is_landlord">
-                    I am signing up as a Landlord
-                  </label>
+                <label class="form-check-label">Landlord or Tenant</label>
+                <select class="form-control" name="" id="new-account-is_landlord">
+                  <option value="true">Landlord</option>
+                  <option value="false">Tenant</option>
+                </select>
               </div>
           </div>
           <div class="modal-footer">
             <button type="button" id="cancel-signup" class="btn" data-dismiss="modal">Close</button>
-            <button type="button" id="signup" class="btn">Sign up</button>
+            <button type="submit" id="signup" class="btn">Sign up</button>
           </div>
         </div>
       </div>

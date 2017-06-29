@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   let BASE_URL = '';
-  const NEWACCOUNT_ENDPOINT = BASE_URL + `/auth/signup`;
-  let newAccount = {};
+
   function getBaseURL() {
     if (window.location.hostname == "localhost") {
-      BASE_URL = `http://localhost:3000`;
+      BASE_URL = `http://localhost:3000/auth`;
     } else {
       BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
     }
   }
+  getBaseURL();
+
+  const NEWACCOUNT_ENDPOINT = BASE_URL + `/signup`;
 
   function modalMovement() {
     $('#login-button').click(event => {
@@ -30,52 +32,67 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   modalMovement();
 
+  redirectIfLoggedIn();
+
   function getSignUpFormData() {
-    const signupForm = document.querySelector('#signup');
-    signupForm.addEventListener('click', event => {
+    const signupForm = document.getElementById('signup-form');
+    signupForm.addEventListener('submit', event => {
       event.preventDefault();
-      const first_name = document.getElementById('new-account-first_name').value
-      const last_name = document.getElementById('new-account-last_name').value
-      const email = document.getElementById('new-account-email').value
-      const password = document.getElementById('new-account-password').value
-      let is_landlord;
-      if (!document.getElementById('new-account-is_landlord').value) {
-        return is_landlord = false
-      } else {
-        return is_landlord = true
+      const newAccount = {
+        first_name: document.getElementById('new-account-first_name').value,
+        last_name: document.getElementById('new-account-last_name').value,
+        email: document.getElementById('new-account-email').value,
+        password: document.getElementById('new-account-password').value,
+        is_landlord: document.getElementById('new-account-is_landlord').value
       }
-      newAccount = {
-        first_name,
-        last_name,
-        email,
-        password,
-        is_landlord
+      if (validPassword(newAccount.password) == true && validEmailAddress(newAccount.email) == true) {
+        createUserRequest(NEWACCOUNT_ENDPOINT, newAccount);
+      } else {
+        alert("Valid email and password required")
       }
     })
-    createUserRequest(NEWACCOUNT_ENDPOINT, newAccount);
   }
 
   function createUserRequest(NEWACCOUNT_ENDPOINT, newAccount) {
+    console.log(NEWACCOUNT_ENDPOINT);
+
     const request = new Request(NEWACCOUNT_ENDPOINT, {
       method: "POST",
       mode: 'cors',
+      body: JSON.stringify(newAccount),
       headers: {
         'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newAccount)
+        'Content-Type': 'application/json; charset=utf-8'
+      }
     })
     createNewUser(request);
   }
 
   function createNewUser(request) {
     return fetch(request)
-      .then(res => {
-        return res.json();
+      .then(signUpCheckStatus)
+      .then(parseJSON)
+      .then(result => {
+        if (result.message == "Email is already in use") {
+          alert("Email is already in use")
+        } else {
+          alert("New User Created");
+          window.location = `/account/user.html?id=${result.id}`
+        }
       })
       .catch(throwError)
   }
 
-  // getSignUpFormData();
+  function signUpCheckStatus(response) {
+    if (!response.ok) {
+      const error = new Error(response.statusText);
+      error.response = response;
+      throw error;
+    } else {
+      return response
+    }
+  }
+
+  getSignUpFormData();
 
 });
