@@ -1,16 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   redirectIfLoggedIn();
-  let BASE_URL = '';
-
-  function getBaseURL() {
-    if (window.location.hostname == "localhost") {
-      BASE_URL = `http://localhost:3000`;
-    } else {
-      BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
-    }
-  }
-  getBaseURL();
-
+  
   const NEWACCOUNT_ENDPOINT = BASE_URL + `/auth/signup`;
 
   function modalMovement() {
@@ -26,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   modalMovement();
 
   function getSignUpFormData() {
-    const signupForm = document.getElementById('signup-form');
-    signupForm.addEventListener('submit', event => {
+    const signupForm = document.getElementById('signup');
+    signupForm.addEventListener('click', event => {
       event.preventDefault();
       const newAccount = {
         first_name: document.getElementById('new-account-first_name').value,
