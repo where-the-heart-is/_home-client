@@ -56,12 +56,6 @@
     </div>
   </footer>
   <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
-  <script src="../assets/scripts/global.js" charset="utf-8"></script>
-  <script src="../assets/scripts/property.js" charset="utf-8"></script>
   <!-- PROPERTY TEMPLATE -->
   <script type="text/x-handlebars-template" id="single-property-template">
     {{property}}
@@ -109,37 +103,73 @@
         {{#each documents}}
         <div class="box-content">
           <a href="{{document_url}}"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i>{{title}}</a>
-          <a><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+          <button><i class="fa fa-pencil fa-lg edit-doc-button" data-id={{id}} aria-hidden="true" data-toggle="document-edit" data-target="#document-edit"></i></button>
         </div>
         {{/each}}
         <!-- Document Modal -->
-        <div class="modal fade" aria-labelledby="document-edit" id="document-edit">
+        <div class="modal fade" aria-labelledby="document-edit" id="document-add">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title text-center">Create New Document</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                <div class="input-group">
+                  <label class="label label-default">Document Title</label>
+                  <input type="text" class="form-control" id="document-title" placeholder="">
+                </div>
+                <div class="input-group">
+                  <label class="label label-default">Document URL</label>
+                  <input type="text" class="form-control" id="document-url" placeholder="" />
+                </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn">Save changes</button>
+                <button type="button" class="btn" id="add-document">Add Document</button>
                 <button type="button" class="btn" data-dismiss="modal">Close</button>
 
               </div>
             </div>
           </div>
         </div>
-        <button type="button" class="btn" data-toggle="document-edit" data-target="#document-edit" id="document-btn">Add</button>
+        <!-- Document Edit Modal -->
+        <div class="modal fade" aria-labelledby="document-edit" id="document-edit">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-center">Edit Document</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group">
+                  <label class="label label-default">Document Title</label>
+                  <input type="text" class="form-control" id="edit-title" placeholder="">
+                </div>
+                <div class="input-group">
+                  <label class="label label-default">Document URL</label>
+                  <input type="text" class="form-control" id="edit-url" placeholder="" />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" id="edit-document">Edit Document</button>
+                <button type="button" class="btn" data-dismiss="modal" id="delete-doc-button">Delete Document</button>
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn" data-toggle="document-add" data-target="#document-add" id="document-btn">Add</button>
       </div>
     </div>
   </script>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
   <script src="../assets/scripts/global.js" charset="utf-8"></script>
   <script src="../assets/scripts/property.js" charset="utf-8"></script>

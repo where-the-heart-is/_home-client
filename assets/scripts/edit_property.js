@@ -32,6 +32,7 @@ $(() => {
     event.preventDefault();
     let newTenant = createTenantObject();
     createAddTenantRequest(`${PROPERTY_ENDPOINT}/${parsedQueryString}/tenants`, newTenant)
+    window.location = `/account/property.html?property_id=${parsedQueryString}`
   })
 
   //gathers form input
