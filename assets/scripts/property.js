@@ -79,6 +79,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     tenantDiv.classList.add("dash-container");
     tenantDiv.innerHTML = html;
     getTenant.appendChild(tenantDiv);
+    deleteTenantOnClick();
+  }
+
+  function deleteTenantOnClick() {
+    $('.delete-tenant').click(function(event) {
+      const removedTenant = $(this).data('id');
+      console.log(removedTenant);
+    });
   }
 
   // DOCUMENT AND MAINTENANCE REQUEST
@@ -129,11 +137,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
   }
 
-  $('.delete-tenant').click(function(event) {
-    console.log('hi');
-    const removedTenant = $(this).data('id');
-    console.log(removedTenant);
-  })
 
 >>>>>>> a6af4e2684b1cfed7db32803861520d84190055a
 })
