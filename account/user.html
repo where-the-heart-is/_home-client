@@ -57,9 +57,7 @@
   <!-- Scripts -->
   <script type="text/x-handlebars-template" id="user-profile-template">
     {{profile}}
-    <div class="dash-container">
-      <h3>DASHBOARD | <small>Welcome, {{first_name}}</small></h3>
-    </div>
+    <h3>DASHBOARD | <small>Welcome, {{first_name}}</small></h3>
   </script>
 
   <script type="text/x-handlebars-template" id="user-property-template">
@@ -74,7 +72,7 @@
               </div>
               <div class="box-content">
                 <h6>{{address}}</h6>
-                <p>{{city}}, {{state}} {{zip_code}}</p>
+                <small>{{city}}, {{state}} {{zip_code}}</small>
               </div>
             </a>
           </div>
