@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
   }
 
+
+
   getBaseURL();
 
   const PROPERTY_ENDPOINT = BASE_URL + `/api/v1/property/`
@@ -71,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const source = document.querySelector('#tenants-template').innerHTML;
     const template = Handlebars.compile(source);
     const html = template({tenants});
+    console.log(tenants);
     const getTenant = document.querySelector('.tenants');
     const tenantDiv = document.createElement('div');
     tenantDiv.classList.add("dash-container");
@@ -109,4 +112,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
       $('#document-edit').modal();
     })
   }
+<<<<<<< HEAD
+=======
+
+  function deleteTenantRequest(TENANTS_URL) {
+
+    const deleteBody = {
+      id: removedTenant,
+      property_id: parsedQueryString
+
+    }
+
+    const request = new Request(TENANTS_URL, {
+      method: "delete",
+      body: JSON.stringify(deleteBody)
+    })
+  }
+
+  $('.delete-tenant').click(function(event) {
+    console.log('hi');
+    const removedTenant = $(this).data('id');
+    console.log(removedTenant);
+  })
+
+>>>>>>> a6af4e2684b1cfed7db32803861520d84190055a
 })

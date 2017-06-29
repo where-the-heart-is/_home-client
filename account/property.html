@@ -93,6 +93,7 @@
           <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
           <a href="#"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
         </div>
+        <button data-id='{{id}}' class="btn delete-tenant">REMOVE</button>
       </div>
     </div>
     {{/each}}
@@ -108,8 +109,10 @@
         {{#each documents}}
         <div class="box-content">
           <a href="{{document_url}}"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i>{{title}}</a>
+          <a><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
         </div>
         {{/each}}
+<<<<<<< HEAD
         <!-- Document Modal -->
         <div class="modal fade" aria-labelledby="document-edit" id="document-edit">
           <div class="modal-dialog" role="document">
@@ -132,11 +135,21 @@
           </div>
         </div>
         <button type="button" class="btn" data-toggle="document-edit" data-target="#document-edit" id="document-btn">Add</button>
+=======
+        <button class="btn align-bottom">Add</button>
+>>>>>>> a6af4e2684b1cfed7db32803861520d84190055a
       </div>
     </div>
   </script>
 
+<<<<<<< HEAD
 
+=======
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js" charset="utf-8"></script>
+  <script src="../assets/scripts/global.js" charset="utf-8"></script>
+  <script src="../assets/scripts/property.js" charset="utf-8"></script>
+>>>>>>> a6af4e2684b1cfed7db32803861520d84190055a
 </body>
 
 </html>
