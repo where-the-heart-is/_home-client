@@ -77,4 +77,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     propertyDiv.innerHTML = html;
     getProperty.appendChild(propertyDiv);
   }
+
+  if (localStorage.is_landlord) {
+    
+  }
+  function createNewProperty() {
+
+  }
 });

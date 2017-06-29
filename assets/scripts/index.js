@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+  redirectIfLoggedIn();
   let BASE_URL = '';
 
   function getBaseURL() {
@@ -13,14 +14,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const NEWACCOUNT_ENDPOINT = BASE_URL + `/auth/signup`;
 
   function modalMovement() {
-    $('#login-button').click(event => {
-      $('#login-modal').modal();
-    })
-
-    $('#cancel-login').click(() => {
-      $('#login-modal').modal('hide');
-    })
-
     $('#signup-button').click(event => {
       $('#signup-modal').modal();
     })
@@ -31,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   modalMovement();
-
-  redirectIfLoggedIn();
 
   function getSignUpFormData() {
     const signupForm = document.getElementById('signup-form');
@@ -45,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         password: document.getElementById('new-account-password').value,
         is_landlord: document.getElementById('new-account-is_landlord').value
       }
+      console.log(newAccount);
       if (validPassword(newAccount.password) == true && validEmailAddress(newAccount.email) == true) {
         createUserRequest(NEWACCOUNT_ENDPOINT, newAccount);
       } else {
@@ -74,10 +66,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if (result.message == "Email is already in use") {
           alert("Email is already in use")
         } else {
-          alert("New User Created");
-          window.location = `/account/user.html?id=${result.id}`
+          setIdRedirect(result)
         }
       })
+
       .catch(throwError)
   }
 

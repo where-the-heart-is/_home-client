@@ -83,13 +83,15 @@
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="login-form form-group">
-            <h3 class="text-center">Account Login</h3>
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="hello@world.com">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
-            <button type="button" name="login-button" class="btn login-button" id="login">Login</button>
-            <button type="button" name="cancel-button" class="btn cancel-button" id="cancel-login">Cancel</button>
+            <form id="form-login">
+              <h3 class="text-center">Account Login</h3>
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="login-email" placeholder="hello@world.com">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="login-password">
+              <button type="button" name="login-button" class="btn login-button" id="login">Login</button>
+              <button type="button" name="cancel-button" class="btn cancel-button" id="cancel-login">Cancel</button>
+            </form>
           </div>
         </div>
       </div>
@@ -145,6 +147,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script src="./assets/scripts/global.js" charset="utf-8"></script>
   <script src="./assets/scripts/index.js" charset="utf-8"></script>
+  <script src="./assets/scripts/login.js" charset="utf-8"></script>
 </body>
 
 </html>
