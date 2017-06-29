@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const source = document.querySelector('#tenants-template').innerHTML;
     const template = Handlebars.compile(source);
     const html = template({tenants});
-    console.log(tenants);
     const getTenant = document.querySelector('.tenants');
     const tenantDiv = document.createElement('div');
     tenantDiv.classList.add("dash-container");
