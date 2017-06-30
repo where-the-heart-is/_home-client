@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-
   let BASE_URL = '';
 
   function getBaseURL() {
@@ -81,4 +80,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function createNewProperty() {
 
   }
+
 });

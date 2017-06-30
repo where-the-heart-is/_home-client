@@ -39,8 +39,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     loginForm.addEventListener('click', event => {
       event.preventDefault();
       const userLogin = getUserForm();
-      // console.log(userLogin);
-      createLoginRequest(LOGIN_ENDPOINT, userLogin)
+      if (validPassword(userLogin.password) == true && validEmailAddress(userLogin.email) == true) {
+        createLoginRequest(LOGIN_ENDPOINT, userLogin);
+      } else {
+        alert("Valid email and password required")
+      }
     })
   }
 
