@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function createNewProp() {
     const newProp = {
-      // landlord_id: 
+      landlord_id: parseInt(localStorage.user_id),
       address: document.getElementById('new-address').value,
       rent_price: parseInt(document.getElementById('new-rent').value),
       bedrooms: document.getElementById('new-bedrooms').value,
