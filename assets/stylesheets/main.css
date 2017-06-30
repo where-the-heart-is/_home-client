@@ -56,8 +56,8 @@ main {
 }
 
 .btn:hover {
-  background-color: #fff;
-  color: #DE3C4B;
+  background-color: #E45F6B;
+  color: #FFF;
 }
 
 a.btn, button.btn {

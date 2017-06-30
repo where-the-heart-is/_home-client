@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     event.preventDefault();
     let newTenant = createTenantObject();
     createAddTenantRequest(`${PROPERTY_ENDPOINT}/${parsedQueryString}/tenants`, newTenant)
-    window.location = `/account/property.html?property_id=${parsedQueryString}`
   })
 
   //gathers form input
@@ -57,7 +56,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         "Content-Type": "application/json"
       }
     });
-    processRequest(tenantRequest);
+    processRequest(tenantRequest)
+    .then(json => {
+      window.location = `/account/property.html?property_id=${parsedQueryString}`
+    });
   }
 
 
@@ -72,26 +74,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
       body: JSON.stringify(propertyUpdates)
 
     });
-    processRequest(propRequest);
+    processRequest(propRequest)
+      .then(json => {
+        redirectIfLoggedIn()
+      });
   };
 
   function createDeleteRequest(url) {
     const propRequest = new Request(url, {
       method: "delete"
     });
-    processRequest(propRequest);
+    processRequest(propRequest)
+      .then(json => {
+        redirectIfLoggedIn()
+      });
   };
 
 
   function processRequest(request) {
-    console.log('going!');
-    fetch(request)
+    return fetch(request)
       .then(res => {
         res.json()
-          .then(json => {
-            redirectIfLoggedIn();
-            return json;
-          })
       })
       .catch(throwError)
   }
