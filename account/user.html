@@ -17,9 +17,10 @@
   <header>
     <nav>
       <ul class="sidenav">
-        <li class="text-center"><img src="../assets/images/atHome_white.png" class="image-resize" alt="Brand Logo" /><a href="./index.html"></a></li>
-        <li><a href="" onclick="redirectIfLoggedIn()">Dashboard</a></li>
-        <li><a href="#">Contact</a></li>
+        <a href="../index.html"><li class="text-center"><img src="../assets/images/atHome_white.png" class="image-resize" alt="Brand Logo" /></li></a>
+        <li><a href="../index.html">Dashboard</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="./new_property.html" class="landlord">ADD NEW PROPERTY</a></li>
         <li><a href="#" onclick="logout()">Logout</a></li>
       </ul>
     </nav>
@@ -33,17 +34,22 @@
   <main>
 
     <section class="content">
-      <section class="profile">
-        <!-- Append User Name Here -->
+
+      <section class="flex-this">
+        <div class="profile">
+          <!-- Append User Name Here -->
+        </div>
+        <div>
+          <a href="./new_property.html" class="btn btn-add-prop landlord">ADD NEW PROPERTY</a>
+        </div>
+
       </section>
 
       <section class="property">
         <!-- Append Property Info Here -->
       </section>
 
-      <section>
-        <a href="./new_property.html" class="btn landlord">ADD NEW PROPERTY</a>
-      </section>
+
 
     </section>
   </main>
@@ -57,7 +63,7 @@
   <!-- Scripts -->
   <script type="text/x-handlebars-template" id="user-profile-template">
     {{profile}}
-    <h3>DASHBOARD | <small>Welcome, {{first_name}}</small></h3>
+    <h3 class="header-font">Hello {{first_name}} and welcome home</h3>
   </script>
 
   <script type="text/x-handlebars-template" id="user-property-template">

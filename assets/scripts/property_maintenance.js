@@ -1,4 +1,4 @@
-$(() => {
+document.addEventListener("DOMContentLoaded", function(event) {
 
   const PROPERTY_ENDPOINT = BASE_URL + `/api/v1/property/`
   const hrefLocation = window.location.href;
@@ -16,7 +16,6 @@ $(() => {
     $('#add-maintenance').click(() => {
       let newMaintenance = createMaintenanceObject();
       createAddMaintenanceRequest(MAINTENANCE_ENDPOINT, newMaintenance)
-      window.location = PROPERTY_PAGE_URL;
     });
 
     $('.edit-maint-button').click(function() {
@@ -27,13 +26,11 @@ $(() => {
     $('#edit-maintenance').click(function() {
       let editedMaintenance = createEditedMaintenanceObject();
       createEditedMaintenanceRequest(MAINTENANCE_ENDPOINT, editedMaintenance)
-      window.location = PROPERTY_PAGE_URL;
     });
 
     $('#delete-main-button').click(function() {
       const deleteMaintRequest = createDeleteMaintenanceRequest(MAINTENANCE_ENDPOINT);
       processRequest(deleteMaintRequest);
-      window.location = PROPERTY_PAGE_URL;
     })
   }
 
@@ -111,13 +108,13 @@ $(() => {
   createMainRequest(MAINTENANCE_ENDPOINT)
 
   function getMainInformation(request) {
-    fetch(request)
+    return fetch(request)
       .then(parseJSON)
-      .then(showMain)
-      .then(json => {
-        // return window.location = PROPERTY_PAGE_URL
-      })
-      .catch(throwError)
+        .then(showMain)
+        .then(json => {
+          // return window.location = PROPERTY_PAGE_URL
+        })
+        .catch(throwError)
   }
 
   function showMain(maintenance) {
@@ -139,8 +136,7 @@ $(() => {
       .then(res => {
         res.json()
           .then(json => {
-            // return window.location = PROPERTY_PAGE_URL
-            // return json;
+            return window.location = PROPERTY_PAGE_URL
           })
       })
       .catch(throwError)

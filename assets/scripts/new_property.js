@@ -42,12 +42,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   function createProperty(request) {
-    fetch(request)
-    .then(parseJSON)
-      .then(result => {
-        setIdRedirect(result)
-      })
-      .catch(throwError)
+    return fetch(request)
+      .then(parseJSON)
+        .then(result => {
+          redirectIfLoggedIn()
+        })
+        .catch(throwError)
   }
 
   getNewPropData()
