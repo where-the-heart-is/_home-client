@@ -32,7 +32,6 @@ $(() => {
 
     $('.edit-maint-button').click(function() {
       maintenanceId = $(this).data('id');
-      console.log('FUcky');
       $('#maintenance-edit').modal();
     });
 
@@ -45,7 +44,7 @@ $(() => {
     $('#delete-main-button').click(function() {
       const deleteMaintRequest = createDeleteMaintenanceRequest(MAINTENANCE_ENDPOINT);
       processRequest(deleteMaintRequest);
-      // window.location = PROPERTY_PAGE_URL;
+      window.location = PROPERTY_PAGE_URL;
     })
   }
 
@@ -105,9 +104,7 @@ $(() => {
       .then(parseJSON)
       .then(showMain)
       .then(json => {
-        console.log(json);
         // return window.location = PROPERTY_PAGE_URL
-        // return json;
       })
       .catch(throwError)
   }
@@ -123,6 +120,7 @@ $(() => {
     maintenanceDiv.innerHTML = html;
     getMain.appendChild(maintenanceDiv);
     maintenanceClickHandlers();
+    showHideFeatures();
   }
 
   function processRequest(request) {

@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     propertyDiv.classList.add("dash-container");
     propertyDiv.innerHTML = html;
     getProperty.appendChild(propertyDiv);
+    showHideFeatures();
   }
 
   // TENANT REQUEST
@@ -72,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     tenantDiv.innerHTML = html;
     getTenant.appendChild(tenantDiv);
     deleteTenantOnClick();
+    showHideFeatures();
   }
 
   function deleteTenantOnClick() {
@@ -129,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     documentDiv.innerHTML = html;
     getDocs.appendChild(documentDiv);
     docClickHandlers();
+    showHideFeatures();
   }
 
   function docClickHandlers() {

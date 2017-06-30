@@ -24,7 +24,7 @@
         <li><a href="#">Documents</a></li>
         <li><a href="#">Maintenance</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a onclick="logout()">Logout</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
       </ul>
     </nav>
   </header>
@@ -73,7 +73,7 @@
         <h6>Bedrooms: {{bedrooms}}</h6>
         <h6>Bathrooms: {{bathrooms}}</h6>
         <h6>Square Footage: {{square_footage}} sq.ft.</h6>
-        <a href="./edit_property.html?propertyID={{id}}"class="btn">Edit Property</a>
+        <a href="./edit_property.html?propertyID={{id}}" class="btn landlord">EDIT PROPERTY</a>
       </div>
     </div>
   </script>
@@ -91,7 +91,7 @@
           <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
           <a href="#"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
         </div>
-        <button data-id='{{id}}' class="btn delete-tenant">REMOVE</button>
+        <button data-id='{{id}}' class="btn delete-tenant landlord">REMOVE</button>
       </div>
     </div>
     {{/each}}
@@ -166,90 +166,90 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn" data-toggle="document-add" data-target="#document-add" id="document-btn">Add</button>
+        <button type="button" class="btn landlord" data-toggle="document-add" data-target="#document-add" id="document-btn">Add</button>
       </div>
     </div>
   </script>
 
-    <!-- MAINTENANCE TEMPLATE -->
-    <script type="text/x-handlebars-template" id="maintenance-template">
-      <div class="flex-container">
-        <div class="small-box">
-          <div class="box-header header-text">
-            <h5>Maintenance Requests</h5>
-          </div>
-          {{#each maintenance}}
-          <div class="box-content">
-            <h5>{{title}}</h5>
-            <p>Request: {{request}}<br />Status: {{status}}</p>
-            <button><i class="fa fa-pencil fa-lg edit-maint-button" data-id={{id}} aria-hidden="true" data-toggle="maintenance-edit" data-target="#maintenance-edit"></i></button>
+  <!-- MAINTENANCE TEMPLATE -->
+  <script type="text/x-handlebars-template" id="maintenance-template">
+    <div class="flex-container">
+      <div class="small-box">
+        <div class="box-header header-text">
+          <h5>Maintenance Requests</h5>
+        </div>
+        {{#each maintenance}}
+        <div class="box-content">
+          <h5>{{title}}</h5>
+          <p>Request: {{request}}<br />Status: {{status}}</p>
+          <button><i class="fa fa-pencil fa-lg edit-maint-button" data-id={{id}} aria-hidden="true" data-toggle="maintenance-edit" data-target="#maintenance-edit"></i></button>
         </div>
         {{/each}}
 
-          <button type="button" class="btn" data-toggle="maintenance-add" data-target="maintenance-add" id="main-button">Add</button>
-        </div>
+        <button type="button" class="btn tenant" data-toggle="maintenance-add" data-target="maintenance-add" id="main-button">Add</button>
       </div>
-      <!-- Maintenance Modal -->
-      <div class="modal fade" aria-labelledby="maintenance-add" id="maintenance-add">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-center">Create New Maintenance Request</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    </div>
+    <!-- Maintenance Modal -->
+    <div class="modal fade" aria-labelledby="maintenance-add" id="maintenance-add">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center">Create New Maintenance Request</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+              <label class="label label-default">Request Title</label>
+              <input type="text" class="form-control" id="maintenance-title" placeholder="">
             </div>
-            <div class="modal-body">
-              <div class="input-group">
-                <label class="label label-default">Request Title</label>
-                <input type="text" class="form-control" id="maintenance-title" placeholder="">
-              </div>
-              <div class="input-group">
-                <label class="label label-default">Request Description</label>
-                <input type="text" class="form-control" id="maintenance-desc" placeholder="" />
-              </div>
-              <div class="input-group">
-                <label class="label label-default">Request Status (pending/complete)</label>
-                <input type="text" class="form-control" id="maintenance-status" placeholder="" />
-              </div>
+            <div class="input-group">
+              <label class="label label-default">Request Description</label>
+              <input type="text" class="form-control" id="maintenance-desc" placeholder="" />
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" id="add-maintenance">Add Request</button>
-              <button type="button" class="btn" data-dismiss="modal">Close</button>
+            <div class="input-group">
+              <label class="label label-default">Request Status (pending/complete)</label>
+              <input type="text" class="form-control" id="maintenance-status" placeholder="" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" id="add-maintenance">Add Request</button>
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
 
-            </div>
           </div>
         </div>
       </div>
-      <!-- Maintenance Edit Modal -->
-      <div class="modal fade" aria-labelledby="maintenance-edit" id="maintenance-edit">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-center">Edit Maintenance Request</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    </div>
+    <!-- Maintenance Edit Modal -->
+    <div class="modal fade" aria-labelledby="maintenance-edit" id="maintenance-edit">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center">Edit Maintenance Request</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+              <label class="label label-default">Request Title</label>
+              <input type="text" class="form-control" id="edit-title" placeholder="">
             </div>
-            <div class="modal-body">
-              <div class="input-group">
-                <label class="label label-default">Request Title</label>
-                <input type="text" class="form-control" id="edit-title" placeholder="">
-              </div>
-              <div class="input-group">
-                <label class="label label-default">Request Description</label>
-                <input type="text" class="form-control" id="edit-url" placeholder="" />
-              </div>
+            <div class="input-group">
+              <label class="label label-default">Request Description</label>
+              <input type="text" class="form-control" id="edit-url" placeholder="" />
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" id="edit-maintenance">Edit Request</button>
-              <button type="button" class="btn" data-dismiss="modal" id="delete-main-button">Delete Request</button>
-              <button type="button" class="btn" data-dismiss="modal">Close</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" id="edit-maintenance">Edit Request</button>
+            <button type="button" class="btn" data-dismiss="modal" id="delete-main-button">Delete Request</button>
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
 
-            </div>
           </div>
         </div>
       </div>
+    </div>
   </script>
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
