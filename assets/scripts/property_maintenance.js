@@ -1,16 +1,5 @@
 $(() => {
-
-  let BASE_URL = '';
-  function getBaseURL() {
-    if (window.location.hostname == "localhost") {
-      BASE_URL = `http://localhost:3000`;
-    } else {
-      BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
-    }
-  }
-
-  getBaseURL();
-
+  
   const PROPERTY_ENDPOINT = BASE_URL + `/api/v1/property/`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
