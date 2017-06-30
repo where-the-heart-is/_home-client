@@ -178,71 +178,76 @@
           <div class="box-header header-text">
             <h5>Maintenance Requests</h5>
           </div>
-          <div class="box-content">
           {{#each maintenance}}
+          <div class="box-content">
             <h5>{{title}}</h5>
             <p>Request: {{request}}<br />Status: {{status}}</p>
-            <button><i class="fa fa-pencil fa-lg edit-doc-button" data-id={{id}} aria-hidden="true" data-toggle="maintenance-edit" data-target="#maintenance-edit"></i></button>
-          {{/each}}
+            <button><i class="fa fa-pencil fa-lg edit-maint-button" data-id={{id}} aria-hidden="true" data-toggle="maintenance-edit" data-target="#maintenance-edit"></i></button>
         </div>
-          <!-- Maintenance Modal -->
-          <div class="modal fade" aria-labelledby="maintenance-edit" id="maintenance-add">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-center">Create New Request</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="input-group">
-                    <label class="label label-default">Request Title</label>
-                    <input type="text" class="form-control" id="maintenance-title" placeholder="">
-                  </div>
-                  <div class="input-group">
-                    <label class="label label-default">Request Description</label>
-                    <input type="text" class="form-control" id="maintenance-url" placeholder="" />
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn" id="add-maintenance">Add Request</button>
-                  <button type="button" class="btn" data-dismiss="modal">Close</button>
+        {{/each}}
 
-                </div>
+          <button type="button" class="btn" data-toggle="maintenance-add" data-target="maintenance-add" id="main-button">Add</button>
+        </div>
+      </div>
+      <!-- Maintenance Modal -->
+      <div class="modal fade" aria-labelledby="maintenance-add" id="maintenance-add">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center">Create New Maintenance Request</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <label class="label label-default">Request Title</label>
+                <input type="text" class="form-control" id="maintenance-title" placeholder="">
+              </div>
+              <div class="input-group">
+                <label class="label label-default">Request Description</label>
+                <input type="text" class="form-control" id="maintenance-desc" placeholder="" />
+              </div>
+              <div class="input-group">
+                <label class="label label-default">Request Status (pending/complete)</label>
+                <input type="text" class="form-control" id="maintenance-status" placeholder="" />
               </div>
             </div>
-          </div>
-          <!-- Maintenance Edit Modal -->
-          <div class="modal fade" aria-labelledby="maintenance-edit" id="maintenance-edit">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-center">Edit Document</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="input-group">
-                    <label class="label label-default">Request Title</label>
-                    <input type="text" class="form-control" id="edit-title" placeholder="">
-                  </div>
-                  <div class="input-group">
-                    <label class="label label-default">Request Description</label>
-                    <input type="text" class="form-control" id="edit-url" placeholder="" />
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn" id="edit-maintenance">Edit Document</button>
-                  <button type="button" class="btn" data-dismiss="modal" id="delete-main-button">Delete Request</button>
-                  <button type="button" class="btn" data-dismiss="modal">Close</button>
+            <div class="modal-footer">
+              <button type="button" class="btn" id="add-maintenance">Add Request</button>
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
 
-                </div>
-              </div>
             </div>
           </div>
-          <button type="button" class="btn" data-toggle="document-add" data-target="#document-add" id="document-btn">Add</button>
+        </div>
+      </div>
+      <!-- Maintenance Edit Modal -->
+      <div class="modal fade" aria-labelledby="maintenance-edit" id="maintenance-edit">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center">Edit Maintenance Request</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <label class="label label-default">Request Title</label>
+                <input type="text" class="form-control" id="edit-title" placeholder="">
+              </div>
+              <div class="input-group">
+                <label class="label label-default">Request Description</label>
+                <input type="text" class="form-control" id="edit-url" placeholder="" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" id="edit-maintenance">Edit Request</button>
+              <button type="button" class="btn" data-dismiss="modal" id="delete-main-button">Delete Request</button>
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+
+            </div>
+          </div>
         </div>
       </div>
   </script>
