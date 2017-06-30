@@ -100,6 +100,10 @@ a>i {
   color: #DE3C4B;
 }
 
+.property-update {
+  padding: 2em;
+}
+
 @media (min-width: 768px) {
   .mobile {
     display: none;

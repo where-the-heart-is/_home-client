@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     event.preventDefault();
     let propertyUpdates = createUpdateObject();
     createPutRequest(PROPERTY_ENDPOINT, propertyUpdates)
-
   });
 
   $('#delete-button').click((event) => {
