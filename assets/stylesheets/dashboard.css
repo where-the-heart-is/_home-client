@@ -106,9 +106,12 @@ a>i {
 .flex-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .btn-edit{
+  /*display: inline-block;*/
+  vertical-align: middle;
   max-width: 15%;
   border-style: none;
   padding: .75em;

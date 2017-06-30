@@ -74,6 +74,7 @@
         <h6>Bedrooms: {{bedrooms}}</h6>
         <h6>Bathrooms: {{bathrooms}}</h6>
         <h6>Square Footage: {{square_footage}} sq.ft.</h6>
+        <h6>Rent: ${{rent_price}}/mo.</h6>
         <a href="./edit_property.html?propertyID={{id}}" class="btn landlord">EDIT PROPERTY</a>
       </div>
     </div>
@@ -81,117 +82,122 @@
 
   <!-- TENANT TEMPLATE -->
   <script type="text/x-handlebars-template" id="tenants-template">
-    {{#each tenants}}
-    <div class="flex-container">
-      <div class="small-box">
-        <div class="text-center">
-          <img src="../assets/images/default_profile.png" alt="{{first_name}} {{last_name}}" class="rounded-circle img-profile" />
-          <h6>{{first_name}} {{last_name}}</h6>
-          <a href="mailto:{{email}}"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+    <div class="row">
+      {{#each tenants}}
+      <div class="col-xs-12 col-md-6 col-lg-3">
+        <div class="small-box">
+          <div class="text-center">
+            <img src="../assets/images/default_profile.png" alt="{{first_name}} {{last_name}}" class="rounded-circle img-profile" />
+            <h6>{{first_name}} {{last_name}}</h6>
+            <a href="mailto:{{email}}"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+          </div>
+          <button data-id='{{id}}' class="btn delete-tenant landlord">REMOVE</button>
         </div>
-        <button data-id='{{id}}' class="btn delete-tenant landlord">REMOVE</button>
       </div>
+      {{/each}}
     </div>
-    {{/each}}
+
   </script>
 
   <!-- DOCUMENTS TEMPLATE -->
   <script type="text/x-handlebars-template" id="single-doc-template">
 
-      <div class="small-box">
-        <div class="box-header header-text">
-          <h5>Documents</h5>
-        </div>
-        {{#each documents}}
-        <div class="box-content">
-          <div class="row flex-row">
-
-            <a href="{{document_url}}"><i class="fa fa-file-o fa-2x" aria-hidden="true"></i>{{title}} <i class="fa fa-download" aria-hidden="true"></i></a>
-            <button class="btn btn-edit"><i class="fa fa-pencil fa-lg edit-doc-button" data-id={{id}} aria-hidden="true" data-toggle="document-edit" data-target="#document-edit"></i>EDIT</button>
-          </div>
-        </div>
-        {{/each}}
-        <!-- Document Modal -->
-        <div class="modal fade" aria-labelledby="document-edit" id="document-add">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-center">Create New Document</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="input-group">
-                  <label class="label label-default">Document Title</label>
-                  <input type="text" class="form-control" id="document-title" placeholder="">
-                </div>
-                <div class="input-group">
-                  <label class="label label-default">Document URL</label>
-                  <input type="text" class="form-control" id="document-url" placeholder="" />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn" id="add-document">Add Document</button>
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Document Edit Modal -->
-        <div class="modal fade" aria-labelledby="document-edit" id="document-edit">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-center">Edit Document</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="input-group">
-                  <label class="label label-default">Document Title</label>
-                  <input type="text" class="form-control" id="edit-title" placeholder="">
-                </div>
-                <div class="input-group">
-                  <label class="label label-default">Document URL</label>
-                  <input type="text" class="form-control" id="edit-url" placeholder="" />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn" id="edit-document">Edit Document</button>
-                <button type="button" class="btn" data-dismiss="modal" id="delete-doc-button">Delete Document</button>
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="btn landlord" data-toggle="document-add" data-target="#document-add" id="document-btn">Add</button>
+    <div class="small-box">
+      <div class="box-header header-text">
+        <h5>Documents</h5>
       </div>
+      {{#each documents}}
+      <div class="box-content">
+        <div class="row flex-row">
+          <a href="{{document_url}}"><i class="fa fa-file-o fa-2x" aria-hidden="true"></i>{{title}} <i class="fa fa-download" aria-hidden="true"></i></a>
+          <button class="btn-edit"><i class="fa fa-pencil fa-lg edit-doc-button" data-id={{id}} aria-hidden="true" data-toggle="document-edit" data-target="#document-edit"></i>EDIT</button>
+        </div>
+      </div>
+      {{/each}}
+      <!-- Document Modal -->
+      <div class="modal fade" aria-labelledby="document-edit" id="document-add">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center">Create New Document</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <label class="label label-default">Document Title</label>
+                <input type="text" class="form-control" id="document-title" placeholder="">
+              </div>
+              <div class="input-group">
+                <label class="label label-default">Document URL</label>
+                <input type="text" class="form-control" id="document-url" placeholder="" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" id="add-document">Add Document</button>
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Document Edit Modal -->
+      <div class="modal fade" aria-labelledby="document-edit" id="document-edit">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center">Edit Document</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <label class="label label-default">Document Title</label>
+                <input type="text" class="form-control" id="edit-title" placeholder="">
+              </div>
+              <div class="input-group">
+                <label class="label label-default">Document URL</label>
+                <input type="text" class="form-control" id="edit-url" placeholder="" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" id="edit-document">Edit Document</button>
+              <button type="button" class="btn" data-dismiss="modal" id="delete-doc-button">Delete Document</button>
+              <button type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn landlord" data-toggle="document-add" data-target="#document-add" id="document-btn">Add</button>
+    </div>
 
   </script>
 
   <!-- MAINTENANCE TEMPLATE -->
   <script type="text/x-handlebars-template" id="maintenance-template">
 
-      <div class="small-box">
-        <div class="box-header header-text">
-          <h5>Maintenance Requests</h5>
-        </div>
-        {{#each maintenance}}
-        <div class="box-content">
+    <div class="small-box">
+      <div class="box-header header-text">
+        <h5>Maintenance Requests</h5>
+      </div>
+      {{#each maintenance}}
+      <div class="box-content">
+
+        <div class="row flex-row">
           <h5>{{title}}</h5>
           <p>Description: {{request}}<br />Status: {{status}}</p>
-          <button><i class="fa fa-pencil fa-lg edit-maint-button" data-id={{id}} aria-hidden="true" data-toggle="maintenance-edit" data-target="#maintenance-edit"></i></button>
+          <button class="btn-edit"><i class="fa fa-pencil fa-lg edit-maint-button" data-id={{id}} aria-hidden="true" data-toggle="maintenance-edit" data-target="#maintenance-edit"></i>EDIT</button>
         </div>
-        {{/each}}
-
-        <button type="button" class="btn tenant" data-toggle="maintenance-add" data-target="maintenance-add" id="main-button">Add</button>
       </div>
+      {{/each}}
+
+      <button type="button" class="btn tenant" data-toggle="maintenance-add" data-target="maintenance-add" id="main-button">Add</button>
+    </div>
     <!-- Maintenance Modal -->
     <div class="modal fade" aria-labelledby="maintenance-add" id="maintenance-add">
       <div class="modal-dialog" role="document">
@@ -209,11 +215,21 @@
             </div>
             <div class="input-group">
               <label class="label label-default">Request Description</label>
-              <input type="text" class="form-control" id="maintenance-desc" placeholder="" />
+              <select class="form-control" id="maintenance-desc">
+                <option value="" disabled selected>Select</option>
+                <option value="Low Priority">Low Priority</option>
+                <option value="Standard">Standard</option>
+                <option value="Urgent">Urgent</option>
+              </select>
             </div>
             <div class="input-group">
-              <label class="label label-default">Request Status (pending/complete)</label>
-              <input type="text" class="form-control" id="maintenance-status" placeholder="" />
+              <label class="label label-default">Request Status</label>
+              <select class="form-control" id="maintenance-status">
+                <option value="" disabled selected>Select</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Complete">Compelete</option>
+                </select>
+              <!-- <input type="text"  placeholder="" /> -->
             </div>
           </div>
           <div class="modal-footer">
@@ -241,11 +257,20 @@
             </div>
             <div class="input-group">
               <label class="label label-default">Request Description</label>
-              <input type="text" class="form-control" id="edit-maint-url" placeholder="" />
+              <select class="form-control" id="edit-maint-url">
+                <option value="" disabled selected>Select</option>
+                <option value="Low Priority">Low Priority</option>
+                <option value="Standard">Standard</option>
+                <option value="Urgent">Urgent</option>
+              </select>
             </div>
             <div class="input-group">
               <label class="label label-default">Request Status</label>
-              <input type="text" class="form-control" id="edit-maint-status" placeholder="" />
+              <select class="form-control" id="edit-maint-status">
+                <option value="" disabled selected>Select</option>
+                <option value="Pending">Pending</option>
+                <option value="Complete">Compelete</option>
+              </select>
             </div>
           </div>
           <div class="modal-footer">
