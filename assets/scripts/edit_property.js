@@ -1,16 +1,4 @@
-$(() => {
-
-  let BASE_URL = '';
-  function getBaseURL() {
-    if (window.location.hostname == "localhost") {
-      BASE_URL = `http://localhost:3000`;
-    } else {
-      BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
-    }
-  }
-
-  getBaseURL();
-
+document.addEventListener("DOMContentLoaded", function(event) {
   const PROPERTY_ENDPOINT = BASE_URL + `/api/v1/property`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
@@ -61,7 +49,7 @@ $(() => {
   }
 
   function createAddTenantRequest(url, body) {
-    const tenantRequest = new Request (url, {
+    const tenantRequest = new Request(url, {
       method: "post",
       mode: "cors",
       body: JSON.stringify(body),
@@ -75,7 +63,7 @@ $(() => {
 
 
   function createPutRequest(url, propertyUpdates) {
-   const propRequest = new Request (url, {
+    const propRequest = new Request(url, {
       method: "put",
       mode: 'cors',
       headers: {
@@ -89,7 +77,7 @@ $(() => {
   };
 
   function createDeleteRequest(url) {
-   const propRequest = new Request (url, {
+    const propRequest = new Request(url, {
       method: "delete"
     });
     processRequest(propRequest);
