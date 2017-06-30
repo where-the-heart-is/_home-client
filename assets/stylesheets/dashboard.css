@@ -58,7 +58,6 @@ div.box>a:hover {
   width: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   min-height: 250px;
-  min-width: 200px;
   margin: 1em 1em 1em 0;
   padding: 0.6em;
 }
@@ -104,6 +103,31 @@ a>i {
   padding: 2em;
 }
 
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-edit{
+  max-width: 15%;
+  border-style: none;
+  padding: .75em;
+  margin: 0.25em;
+  color: #DE3C4B;
+  background-color: #fff;
+}
+
+.btn-edit:hover {
+  color: #fff;
+  background-color: #DE3C4B;
+}
+
+.property-image-cropper {
+  max-height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
 @media (min-width: 768px) {
   .mobile {
     display: none;
@@ -138,5 +162,8 @@ a>i {
   .image-resize {
     width: 90%;
     margin: 2em 0;
+  }
+  .property-image-cropper {
+    max-height: 400px;
   }
 }
