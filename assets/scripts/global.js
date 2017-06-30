@@ -1,20 +1,18 @@
-let BASE_URL = '';
-
-function getBaseURL() {
-  if (window.location.hostname == "localhost") {
-    BASE_URL = `http://localhost:3000`;
-  } else {
-    BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
-  }
+const is_landlord = localStorage.is_landlord;
+if (is_landlord === "true") {
+  $('.landlord').show();
+  $('.tenant').hide();
+} else {
+  $('.landlord').hide();
+  $('.tenant').show();
 }
-getBaseURL();
 
 function parseQueryString(queryString) {
-    queryString = queryString.split('=')
-    return queryString[1];
+  queryString = queryString.split('=')
+  return queryString[1];
 }
 
-function parseJSON (response) {
+function parseJSON(response) {
   return response.json();
 }
 
@@ -47,31 +45,19 @@ function validPassword(userPassword) {
   }
 }
 
-function setIdRedirect(result){
+function setIdRedirect(result) {
   localStorage.user_id = result.id;
   window.location = `/account/user.html?id=${result.id}`
 }
 
 
-function redirectIfLoggedIn(){
-  if(localStorage.user_id){
+function redirectIfLoggedIn() {
+  if (localStorage.user_id) {
     window.location = `/account/user.html?id=${localStorage.user_id}`
   }
 }
 
-if (localStorage.is_landlord) {
-  $('.landlord').show();
-} else {
-  $('.landlord').hide();
-}
-
-if(!localStorage.is_landlord) {
-  $('.tenant').show();
-} else {
-  $('.tenant').hide();
-}
-
-function logout(){
+function logout() {
   localStorage.clear()
   window.location = '/index.html'
 }
