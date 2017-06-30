@@ -1,5 +1,5 @@
 $(() => {
-  
+
   const PROPERTY_ENDPOINT = BASE_URL + `/api/v1/property/`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
@@ -16,7 +16,7 @@ $(() => {
     $('#add-maintenance').click(() => {
       let newMaintenance = createMaintenanceObject();
       createAddMaintenanceRequest(MAINTENANCE_ENDPOINT, newMaintenance)
-      // window.location = PROPERTY_PAGE_URL;
+      window.location = PROPERTY_PAGE_URL;
     });
 
     $('.edit-maint-button').click(function() {
@@ -26,8 +26,8 @@ $(() => {
 
     $('#edit-maintenance').click(function() {
       let editedMaintenance = createEditedMaintenanceObject();
-      console.log(editedDocument);
-      // createEditedMaintenanceRequest(MAINTENANCE_ENDPOINT, editedDocument)
+      createEditedMaintenanceRequest(MAINTENANCE_ENDPOINT, editedMaintenance)
+      window.location = PROPERTY_PAGE_URL;
     });
 
     $('#delete-main-button').click(function() {
@@ -47,6 +47,15 @@ $(() => {
       property_id: parsedQueryString,
       tenant_id: localStorage.user_id
     }
+  }
+
+  function createEditedMaintenanceObject() {
+    return {
+      id: maintenanceId,
+      title: $('#edit-maint-title').val(),
+      request: $('#edit-maint-url').val(),
+      status: $('#edit-maint-status').val()
+    };
   }
 
   function createMainRequest(MAINTENANCE_ENDPOINT) {
@@ -69,6 +78,19 @@ $(() => {
       body: JSON.stringify(newMaintenance)
     });
     processRequest(maintRequest)
+  }
+
+  function createEditedMaintenanceRequest(url, editedMaintenance) {
+    const maintenanceRequest = new Request (url, {
+      method: "put",
+      mode: 'cors',
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedMaintenance)
+    });
+    processRequest(maintenanceRequest)
   }
 
   function createDeleteMaintenanceRequest(url) {
@@ -118,7 +140,7 @@ $(() => {
       .then(res => {
         res.json()
           .then(json => {
-            return window.location = PROPERTY_PAGE_URL
+            // return window.location = PROPERTY_PAGE_URL
             // return json;
           })
       })
