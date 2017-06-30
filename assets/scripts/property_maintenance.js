@@ -32,7 +32,6 @@ $(() => {
 
     $('.edit-maint-button').click(function() {
       maintenanceId = $(this).data('id');
-      console.log('FUcky');
       $('#maintenance-edit').modal();
     });
 
