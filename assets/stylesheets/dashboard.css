@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Allerta');
 .mobile {
   background: #36393B;
   width: 100%;
+}
+.header-font{
+  font-family: 'Allerta', sans-serif;
 }
 
 .sidenav {
@@ -62,7 +66,6 @@ div.box>a:hover {
   margin: 1em 1em 1em 0;
   padding: 0.6em;
   border-top: .5em solid #36393B;
-  overflow: scroll;
 }
 
 .box-header {
@@ -126,10 +129,9 @@ a>i {
   background-color: #fff;
 }
 
-.profile {
+.flex-this {
   display: flex;
   justify-content: space-between;
-  flex-direction: row-reverse;
 }
 
 .btn-edit:hover {

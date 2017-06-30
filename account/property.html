@@ -91,10 +91,10 @@
           <div class="text-center">
             <img src="../assets/images/default_profile.png" alt="{{first_name}} {{last_name}}" class="rounded-circle img-profile" />
             <h6>{{first_name}} {{last_name}}</h6>
-            <a href="mailto:{{email}}"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
+            <a href="mailto:{{email}}"><i class="fa fa-envelope fa-md" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-facebook fa-md" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter fa-md" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-linkedin fa-md" aria-hidden="true"></i></a>
           </div>
           <button data-id='{{id}}' class="btn delete-tenant landlord">REMOVE</button>
         </div>
@@ -114,7 +114,7 @@
       {{#each documents}}
       <div class="box-content">
         <div class="row flex-row">
-          <a href="{{document_url}}"><i class="fa fa-file-o fa-2x" aria-hidden="true"></i>{{title}} <i class="fa fa-download" aria-hidden="true"></i></a>
+          <a href="{{document_url}}"><i class="fa fa-file-o fa-2x" aria-hidden="true"></i>{{title}} <i class="fa fa-download fa-lg" aria-hidden="true"></i></a>
           <button class="btn-edit landlord"><i class="fa fa-pencil fa-lg edit-doc-button" data-id={{id}} aria-hidden="true" data-toggle="document-edit" data-target="#document-edit"></i>EDIT</button>
         </div>
       </div>
