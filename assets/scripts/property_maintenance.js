@@ -16,9 +16,10 @@ $(() => {
   const parsedQueryString = parseQueryString(hrefLocation);
   const MAINTENANCE_ENDPOINT = BASE_URL + `/api/v1/property/${parsedQueryString}/maintenance/`
   const PROPERTY_PAGE_URL =`/account/property.html?property_id=${parsedQueryString}`
+  let maintenanceId = 0;
 
-  function maintananceClickHandlers() {
-    $('#maintenance-btn').click(event => {
+  function maintenanceClickHandlers() {
+    $('#main-button').click(function(event) {
       event.preventDefault();
       $('#maintenance-add').modal();
     })
@@ -26,21 +27,22 @@ $(() => {
     $('#add-maintenance').click(() => {
       let newMaintenance = createMaintenanceObject();
       createAddMaintenanceRequest(MAINTENANCE_ENDPOINT, newMaintenance)
-      window.location = PROPERTY_PAGE_URL;
+      // window.location = PROPERTY_PAGE_URL;
     });
 
-    $('.edit-doc-button').click(function() {
+    $('.edit-maint-button').click(function() {
       maintenanceId = $(this).data('id');
+      console.log('FUcky');
       $('#maintenance-edit').modal();
     });
 
     $('#edit-maintenance').click(function() {
       let editedMaintenance = createEditedMaintenanceObject();
       console.log(editedDocument);
-      createEditedMaintenanceRequest(MAINTENANCE_ENDPOINT, editedDocument)
+      // createEditedMaintenanceRequest(MAINTENANCE_ENDPOINT, editedDocument)
     });
 
-    $('#delete-doc-button').click(function() {
+    $('#delete-main-button').click(function() {
       const deleteDocRequest = createDeleteMaintenanceRequest(MAINTENANCE_ENDPOINT);
       console.log(deleteMaintenanceRequest);
       processRequest(deleteMaintenanceRequest);
@@ -48,7 +50,18 @@ $(() => {
     })
   }
 
-  // DOCUMENT AND MAINTENANCE REQUEST
+  // MAINTENANCE REQUEST
+
+  function createMaintenanceObject() {
+    return {
+      title: $('#maintenance-title').val(),
+      request: $('#maintenance-desc').val(),
+      status: $('#maintenance-status').val(),
+      property_id: parsedQueryString,
+      tenant_id: localStorage.user_id
+    }
+  }
+
   function createMainRequest(MAINTENANCE_ENDPOINT) {
     console.log(MAINTENANCE_ENDPOINT);
     const propertyRequest = new Request(MAINTENANCE_ENDPOINT, {
@@ -58,6 +71,34 @@ $(() => {
     getMainInformation(propertyRequest)
   }
 
+  function createAddMaintenanceRequest (url, newMaintenance) {
+    const maintRequest = new Request (url, {
+      method: "post",
+      mode: 'cors',
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newMaintenance)
+    });
+    processRequest(maintRequest)
+  }
+
+  function createDeleteMaintenanceRequest(url) {
+    const deleteBody = {
+      id: maintenanceId
+    }
+    const request = new Request(url, {
+      method: "delete",
+      body: JSON.stringify(deleteBody),
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json"
+      }
+    });
+    return request;
+  }
+
   createMainRequest(MAINTENANCE_ENDPOINT)
 
   function getMainInformation(request) {
@@ -65,6 +106,7 @@ $(() => {
       .then(parseJSON)
       .then(showMain)
       .then(json => {
+        console.log(json);
         // return window.location = PROPERTY_PAGE_URL
         // return json;
       })
@@ -74,15 +116,27 @@ $(() => {
   function showMain(maintenance) {
     const source = document.querySelector('#maintenance-template').innerHTML;
     const template = Handlebars.compile(source);
-    const html = template({maintenance: [maintenance]});
-    console.log(maintenance);
+    const html = template({maintenance});
+    console.log({maintenance: [maintenance]});
     const getMain = document.querySelector('.maintenance');
     const maintenanceDiv = document.createElement('div');
     maintenanceDiv.classList.add("dash-container");
     maintenanceDiv.innerHTML = html;
     getMain.appendChild(maintenanceDiv);
-    console.log(maintenance.title);
     maintenanceClickHandlers();
+  }
+
+  function processRequest(request) {
+    console.log('request sent!');
+    fetch(request)
+      .then(res => {
+        res.json()
+          .then(json => {
+            return window.location = PROPERTY_PAGE_URL
+            // return json;
+          })
+      })
+      .catch(throwError)
   }
 
 })
