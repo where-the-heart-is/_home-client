@@ -43,10 +43,9 @@ $(() => {
     });
 
     $('#delete-main-button').click(function() {
-      const deleteDocRequest = createDeleteMaintenanceRequest(MAINTENANCE_ENDPOINT);
-      console.log(deleteMaintenanceRequest);
-      processRequest(deleteMaintenanceRequest);
-      window.location = PROPERTY_PAGE_URL;
+      const deleteMaintRequest = createDeleteMaintenanceRequest(MAINTENANCE_ENDPOINT);
+      processRequest(deleteMaintRequest);
+      // window.location = PROPERTY_PAGE_URL;
     })
   }
 
