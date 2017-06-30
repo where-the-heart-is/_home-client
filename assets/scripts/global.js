@@ -1,11 +1,27 @@
-const is_landlord = localStorage.is_landlord;
-if (is_landlord === "true") {
-  $('.landlord').show();
-  $('.tenant').hide();
-} else {
-  $('.landlord').hide();
-  $('.tenant').show();
+let BASE_URL = '';
+
+function getBaseURL() {
+  if (window.location.hostname == "localhost") {
+    BASE_URL = `http://localhost:3000`;
+  } else {
+    BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
+  }
 }
+
+getBaseURL();
+
+function showHideFeatures() {
+  const is_landlord = localStorage.is_landlord;
+  if (is_landlord === "true") {
+    $('.landlord').show();
+    $('.tenant').hide();
+  } else {
+    $('.landlord').hide();
+    $('.tenant').show();
+  }
+}
+
+showHideFeatures()
 
 function parseQueryString(queryString) {
   queryString = queryString.split('=')

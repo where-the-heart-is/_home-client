@@ -1,18 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   redirectIfLoggedIn();
 
-  let BASE_URL = '';
-
-  function getBaseURL() {
-    if (window.location.hostname == "localhost") {
-      BASE_URL = `http://localhost:3000`;
-    } else {
-      BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
-    }
-  }
-
-  getBaseURL();
-
   const LOGIN_ENDPOINT = BASE_URL + `/auth/login`;
 
   function modalMovement() {
