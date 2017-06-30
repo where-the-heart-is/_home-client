@@ -181,7 +181,7 @@
         {{#each maintenance}}
         <div class="box-content">
           <h5>{{title}}</h5>
-          <p>Request: {{request}}<br />Status: {{status}}</p>
+          <p>Description: {{request}}<br />Status: {{status}}</p>
           <button><i class="fa fa-pencil fa-lg edit-maint-button" data-id={{id}} aria-hidden="true" data-toggle="maintenance-edit" data-target="#maintenance-edit"></i></button>
         </div>
         {{/each}}
@@ -234,11 +234,15 @@
           <div class="modal-body">
             <div class="input-group">
               <label class="label label-default">Request Title</label>
-              <input type="text" class="form-control" id="edit-title" placeholder="">
+              <input type="text" class="form-control" id="edit-maint-title" placeholder="">
             </div>
             <div class="input-group">
               <label class="label label-default">Request Description</label>
-              <input type="text" class="form-control" id="edit-url" placeholder="" />
+              <input type="text" class="form-control" id="edit-maint-url" placeholder="" />
+            </div>
+            <div class="input-group">
+              <label class="label label-default">Request Status</label>
+              <input type="text" class="form-control" id="edit-maint-status" placeholder="" />
             </div>
           </div>
           <div class="modal-footer">
