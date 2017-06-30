@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const source = document.querySelector('#single-property-template').innerHTML;
     const template = Handlebars.compile(source);
     const html = template(property[0]);
+    console.log(property);
     const getProperty = document.querySelector('.property');
     const propertyDiv = document.createElement('div');
     propertyDiv.classList.add("dash-container");

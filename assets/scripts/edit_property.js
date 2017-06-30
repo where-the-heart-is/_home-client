@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .then(res => {
         res.json()
           .then(json => {
+            redirectIfLoggedIn();
             return json;
           })
       })

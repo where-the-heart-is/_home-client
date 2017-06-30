@@ -45,7 +45,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     fetch(request)
     .then(parseJSON)
       .then(result => {
-        setIdRedirect(result)
+        // console.log(result);
+        redirectIfLoggedIn(result)
       })
       .catch(throwError)
   }

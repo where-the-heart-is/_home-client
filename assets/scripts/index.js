@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
       .then(signUpCheckStatus)
       .then(parseJSON)
       .then(result => {
+        console.log(result);
+        localStorage.token = result.token;
+        localStorage.user_id = result.id;
+        localStorage.is_landlord = result.is_landlord;
         if (result.message == "Email is already in use") {
           alert("Email is already in use")
         } else {
