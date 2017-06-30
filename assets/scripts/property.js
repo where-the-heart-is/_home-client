@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-
-  let BASE_URL = '';
-  function getBaseURL() {
-    if (window.location.hostname == "localhost") {
-      BASE_URL = `http://localhost:3000`;
-    } else {
-      BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
-    }
-  }
-
-  getBaseURL();
-
   let documentId = 0;
   let removedTenant = 0;
 
@@ -56,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     propertyDiv.classList.add("dash-container");
     propertyDiv.innerHTML = html;
     getProperty.appendChild(propertyDiv);
+    showHideFeatures();
   }
 
   // TENANT REQUEST
@@ -84,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     tenantDiv.innerHTML = html;
     getTenant.appendChild(tenantDiv);
     deleteTenantOnClick();
+    showHideFeatures();
   }
 
   function deleteTenantOnClick() {
@@ -141,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     documentDiv.innerHTML = html;
     getDocs.appendChild(documentDiv);
     docClickHandlers();
+    showHideFeatures();
   }
 
   function docClickHandlers() {

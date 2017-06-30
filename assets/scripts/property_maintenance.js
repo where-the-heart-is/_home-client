@@ -1,16 +1,5 @@
 $(() => {
-
-  let BASE_URL = '';
-  function getBaseURL() {
-    if (window.location.hostname == "localhost") {
-      BASE_URL = `http://localhost:3000`;
-    } else {
-      BASE_URL = `https://rocky-shelf-87257.herokuapp.com`
-    }
-  }
-
-  getBaseURL();
-
+  
   const PROPERTY_ENDPOINT = BASE_URL + `/api/v1/property/`
   const hrefLocation = window.location.href;
   const parsedQueryString = parseQueryString(hrefLocation);
@@ -32,7 +21,6 @@ $(() => {
 
     $('.edit-maint-button').click(function() {
       maintenanceId = $(this).data('id');
-      console.log('FUcky');
       $('#maintenance-edit').modal();
     });
 
@@ -45,7 +33,7 @@ $(() => {
     $('#delete-main-button').click(function() {
       const deleteMaintRequest = createDeleteMaintenanceRequest(MAINTENANCE_ENDPOINT);
       processRequest(deleteMaintRequest);
-      // window.location = PROPERTY_PAGE_URL;
+      window.location = PROPERTY_PAGE_URL;
     })
   }
 
@@ -105,9 +93,7 @@ $(() => {
       .then(parseJSON)
       .then(showMain)
       .then(json => {
-        console.log(json);
         // return window.location = PROPERTY_PAGE_URL
-        // return json;
       })
       .catch(throwError)
   }
@@ -123,6 +109,7 @@ $(() => {
     maintenanceDiv.innerHTML = html;
     getMain.appendChild(maintenanceDiv);
     maintenanceClickHandlers();
+    showHideFeatures();
   }
 
   function processRequest(request) {
