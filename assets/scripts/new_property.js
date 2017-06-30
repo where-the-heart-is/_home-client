@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     addNewPropBtn.addEventListener('click', event => {
       event.preventDefault();
       const newProperty = createNewProp();
-      console.log(newProperty);
       addNewProperty(NEWPROPERTY_URL, newProperty)
     })
   }
@@ -46,8 +45,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     fetch(request)
     .then(parseJSON)
       .then(result => {
-        console.log(result);
-        // setIdRedirect(result)
+        setIdRedirect(result)
       })
       .catch(throwError)
   }

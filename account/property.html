@@ -18,11 +18,7 @@
     <nav>
       <ul class="sidenav">
         <li class="text-center"><img src="../assets/images/atHome_white.png" class="image-resize" alt="Brand Logo" /></li>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Property</a></li>
-        <li><a href="#">Rent</a></li>
-        <li><a href="#">Documents</a></li>
-        <li><a href="#">Maintenance</a></li>
+        <li><a href="" onclick="redirectIfLoggedIn()">Dashboard</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#" onclick="logout()">Logout</a></li>
       </ul>
@@ -39,17 +35,22 @@
       <section class="property">
         <!-- Append Property Here -->
       </section>
+
+      <section class="dash-container">
+        <div class="row">
+          <section class="documents col-sm-12 col-lg-6">
+            <!-- Append Documents Here -->
+          </section>
+          <section class="maintenance col-sm-12 col-lg-6">
+            <!-- Append Documents Here -->
+          </section>
+        </div>
+      </section>
+
       <section class="tenants">
         <!-- Append Tenants Here -->
       </section>
-      <section class="documents">
-        <!-- Append Documents Here -->
 
-      </section>
-      <section class="maintenance">
-        <!-- Append Documents Here -->
-
-      </section>
     </section>
   </main>
   <!-- Footer -->
@@ -65,7 +66,7 @@
     {{property}}
     <div class="box">
       <div class="box-header">
-        <img src="{{image}}" class="image-cropper" alt="{{address}} {{city}}, {{state}} {{zip_code}}" />
+        <img src="{{image}}" class="property-image-cropper" alt="{{address}} {{city}}, {{state}} {{zip_code}}" />
       </div>
       <div class="box-content">
         <h5>{{address}}</h5>
@@ -97,17 +98,20 @@
     {{/each}}
   </script>
 
-  <!-- DOCS TEMPLATE -->
+  <!-- DOCUMENTS TEMPLATE -->
   <script type="text/x-handlebars-template" id="single-doc-template">
-    <div class="flex-container">
+
       <div class="small-box">
         <div class="box-header header-text">
           <h5>Documents</h5>
         </div>
         {{#each documents}}
         <div class="box-content">
-          <a href="{{document_url}}"><i class="fa fa-file-o fa-lg" aria-hidden="true"></i>{{title}}</a>
-          <button><i class="fa fa-pencil fa-lg edit-doc-button" data-id={{id}} aria-hidden="true" data-toggle="document-edit" data-target="#document-edit"></i></button>
+          <div class="row flex-row">
+
+            <a href="{{document_url}}"><i class="fa fa-file-o fa-2x" aria-hidden="true"></i>{{title}} <i class="fa fa-download" aria-hidden="true"></i></a>
+            <button class="btn btn-edit"><i class="fa fa-pencil fa-lg edit-doc-button" data-id={{id}} aria-hidden="true" data-toggle="document-edit" data-target="#document-edit"></i>EDIT</button>
+          </div>
         </div>
         {{/each}}
         <!-- Document Modal -->
@@ -168,12 +172,12 @@
         </div>
         <button type="button" class="btn landlord" data-toggle="document-add" data-target="#document-add" id="document-btn">Add</button>
       </div>
-    </div>
+
   </script>
 
   <!-- MAINTENANCE TEMPLATE -->
   <script type="text/x-handlebars-template" id="maintenance-template">
-    <div class="flex-container">
+
       <div class="small-box">
         <div class="box-header header-text">
           <h5>Maintenance Requests</h5>
@@ -188,7 +192,6 @@
 
         <button type="button" class="btn tenant" data-toggle="maintenance-add" data-target="maintenance-add" id="main-button">Add</button>
       </div>
-    </div>
     <!-- Maintenance Modal -->
     <div class="modal fade" aria-labelledby="maintenance-add" id="maintenance-add">
       <div class="modal-dialog" role="document">

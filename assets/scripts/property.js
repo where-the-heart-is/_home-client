@@ -127,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const html = template({documents});
     const getDocs = document.querySelector('.documents');
     const documentDiv = document.createElement('div');
-    documentDiv.classList.add("dash-container");
     documentDiv.innerHTML = html;
     getDocs.appendChild(documentDiv);
     docClickHandlers();

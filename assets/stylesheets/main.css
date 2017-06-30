@@ -123,10 +123,6 @@ a.btn, button.btn {
   margin-top: 2em;
 }
 
-.float-btn-right {
-  max-width: 30%;
-}
-
 /* Media Queries */
 
 @media (min-width: 768px) {

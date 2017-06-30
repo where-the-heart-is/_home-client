@@ -127,7 +127,6 @@ $(() => {
     console.log({maintenance: [maintenance]});
     const getMain = document.querySelector('.maintenance');
     const maintenanceDiv = document.createElement('div');
-    maintenanceDiv.classList.add("dash-container");
     maintenanceDiv.innerHTML = html;
     getMain.appendChild(maintenanceDiv);
     maintenanceClickHandlers();
